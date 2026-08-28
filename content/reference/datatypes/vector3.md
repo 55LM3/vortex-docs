@@ -20,7 +20,7 @@ Written by Kindtracker on August 28th, 2026
 
 <details>
 <summary><b>Properties</b></summary>
-Properties of a Vector3.
+Properties of a `Vector3`.
 <br><br>
 
 * [X](#x): `Number`
@@ -31,7 +31,7 @@ Properties of a Vector3.
 
 <details>
 <summary><b>Methods</b></summary>
-Methods of a Vector3.
+Methods of a `Vector3`.
 <br><br>
 
 * [new()](#new-number-y-number-z-number): `Vector3`
