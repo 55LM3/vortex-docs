@@ -6,7 +6,7 @@ description: An individual item in an enum
 <link rel="stylesheet" href="/styles/test.css">
 
 <!-- 
-Part
+EnumItem
 Revision 1
 
 Written by Kindtracker on August 28th, 2026

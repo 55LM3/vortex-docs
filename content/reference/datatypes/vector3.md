@@ -13,10 +13,10 @@ Revision 1
 Written by Kindtracker on August 28th, 2026
 -->
 
-## Summary
-
 > [!NOTE] 
-> There will be more methods in the future. This is based on leaks.
+> There will be more things (methods, properties, etc) in the future. This is based on leaks.
+
+## Summary
 
 <details>
 <summary><b>Properties</b></summary>
@@ -34,7 +34,7 @@ Properties of a `Vector3`.
 Methods of a `Vector3`.
 <br><br>
 
-* [new()](#new-number-y-number-z-number): `Vector3`
+* [new(X: `Number`, Y: `Number`, Z: `Number`)](#newx-number-y-number-z-number): `Vector3`
 
 </details>
 
