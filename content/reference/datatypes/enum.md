@@ -6,7 +6,7 @@ description: A type that represents an enum
 <link rel="stylesheet" href="/styles/test.css">
 
 <!-- 
-Part
+Enum
 Revision 1
 
 Written by Kindtracker on August 28th, 2026

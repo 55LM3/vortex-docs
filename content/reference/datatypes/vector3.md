@@ -14,7 +14,7 @@ Written by Kindtracker on August 28th, 2026
 -->
 
 > [!NOTE] 
-> There will be more things (methods, properties, etc) in the future. This is based on leaks.
+> There will be more things (methods, constructors, properties, etc) in the future. This is based on leaks.
 
 ## Summary
 
@@ -30,8 +30,8 @@ Properties of a `Vector3`.
 </details>
 
 <details>
-<summary><b>Methods</b></summary>
-Methods of a `Vector3`.
+<summary><b>Constructors</b></summary>
+Constructors of a `Vector3`.
 <br><br>
 
 * [new(X: `Number`, Y: `Number`, Z: `Number`)](#newx-number-y-number-z-number): `Vector3`
@@ -64,7 +64,7 @@ Methods of a `Vector3`.
 
 <br/>
 
-## Methods
+## Constructors
 
 ### new(X: `Number`, Y: `Number`, Z: `Number`)
 
