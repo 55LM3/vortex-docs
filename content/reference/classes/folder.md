@@ -1,6 +1,6 @@
 ---
 title: Folder
-description: Stub
+description: A general-purpose container for instances.
 ---
 
 Stub
