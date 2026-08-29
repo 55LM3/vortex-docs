@@ -1,5 +1,5 @@
 ---
-title: Intro
+title: Introduction
 description: Introduction to Vortex Studio and scripting.
 ---
 
