@@ -95,6 +95,6 @@ Services of `game`.
 
 > `Instance`
 >
-> ighting is the game service that controls basic rendering and atmospherics. [Lighting](/content/reference/classes/lighting.md)
+> lighting is the game service that controls basic rendering and atmospherics. [Lighting](/content/reference/classes/lighting.md)
 
 <br/>
