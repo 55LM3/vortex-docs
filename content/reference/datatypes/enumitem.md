@@ -3,8 +3,6 @@ title: EnumItem
 description: An individual item in an enum
 ---
 
-<link rel="stylesheet" href="/styles/test.css">
-
 <!-- 
 EnumItem
 Revision 1
