@@ -1,5 +1,5 @@
 ---
-title: Your first script
+title: Your First Script
 description: Learn how to make your first script in Vortex Studio.
 ---
 

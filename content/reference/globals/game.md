@@ -1,7 +1,7 @@
 ---
 title: Game
 description: The root instance of a game.
------------------------------------------
+---
 
 <!-- 
 Game
@@ -95,6 +95,6 @@ Services of `game`.
 
 > `Instance`
 >
-> Stub. [Lighting](/content/reference/classes/lighting.md)
+> ighting is the game service that controls basic rendering and atmospherics. [Lighting](/content/reference/classes/lighting.md)
 
 <br/>
