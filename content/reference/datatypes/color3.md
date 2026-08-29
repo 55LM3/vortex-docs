@@ -2,7 +2,7 @@
 
 title: Color3
 description: A color value comprised of red, green, and blue components.
-------------------------------------------------------------------------
+---
 
 <link rel="stylesheet" href="/styles/test.css">
 

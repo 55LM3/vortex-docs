@@ -2,7 +2,7 @@
 
 title: Vector3
 description: A three-dimensional vector
----------------------------------------
+---
 
 <link rel="stylesheet" href="/styles/test.css">
 
