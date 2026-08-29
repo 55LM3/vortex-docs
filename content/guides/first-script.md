@@ -3,6 +3,13 @@ title: Your first script
 description: Learn how to make your first script in Vortex Studio.
 ---
 
+<!-- 
+Your first script
+Revision 1
+
+Written by Kindtracker on August 29th, 2026
+-->
+
 Let's make Hello world script, create a script in ServerScriptService.
 You will see:
 ```lua

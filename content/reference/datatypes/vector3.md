@@ -1,5 +1,4 @@
 ---
-
 title: Vector3
 description: A three-dimensional vector
 ---
