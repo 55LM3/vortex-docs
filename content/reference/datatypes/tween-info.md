@@ -1,5 +1,5 @@
 ---
-title: Stub
+title: TweenInfo
 description: Stub
 ---
 
