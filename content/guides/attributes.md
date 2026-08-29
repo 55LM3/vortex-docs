@@ -1,6 +1,6 @@
 ---
 title: Attributes
-description: Attributes are basically custom properties that can be given to an Instance. These properties can be Strings, Booleans, and Numbers (Bare Minimum, confirmation is needed for other datatypes.)
+description: Attributes are basically custom properties that can be given to an Instance. These properties can be any of the supported Variant data types.
 
 Note: Variant = Any type.
 ---
@@ -27,12 +27,12 @@ The Value to set the specified Attribute to.
 ```
 ()
 ```
-The SetAttribute Method is used for modifying an attributes value. If the value given is nil, the attribute will be removed.
+The SetAttribute Method is used for modifying an attributes value or creating a new attribute value if there is no attribute. If the value given is nil, the attribute will be removed.
 #### Examples
-In the code snippet below, it sets the `"Transparent"` Attribute of the Part to `true`.
+In the code snippet below, it sets the `"Id"` Attribute of the Part to `1`.
 ```luau
 local Part = workspace:WaitForChild("Part")
-Part:SetAttribute("Transparency", 1)
+Part:SetAttribute("Id", 1)
 ```
 
 ___________________
@@ -54,11 +54,11 @@ The Value which has been given to the Attribute name. If no value is given to th
 ```
 The GetAttribute Method is used for retrieving the Value set to the Attribute name.
 #### Examples
-In the code snippet below it retrieves the Transparency Attribute and then prints it.
+In the code snippet below it retrieves the Id Attribute and then prints it.
 ```luau
 local Part = workspace:WaitForChild("Part")
-local Transparency = Part:GetAttribute("Transparency")
-print(Transparency)
+local Id = Part:GetAttribute("Id")
+print(Id)
 ```
 
 
