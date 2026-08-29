@@ -58,7 +58,7 @@ In the code snippet below it retrieves the Transparency Attribute and then print
 ```luau
 local Part = workspace:WaitForChild("Part")
 local Transparency = Part:GetAttribute("Transparency")
-print("Transparency)
+print(Transparency)
 ```
 
 
