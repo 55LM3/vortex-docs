@@ -24,6 +24,7 @@ Properties of `game`.
 <br><br>
 
 * [Workspace](#workspace): [`Workspace`](/content/reference/classes/workspace.md)
+* [Players](#players): [`Players`](/content/reference/classes/players.md)
 
 </details>
 
@@ -73,6 +74,15 @@ Services of `game`.
 
 <br/>
 
+### Players
+
+> [`Players`](/content/reference/classes/players.md)
+>
+> A direct alias for the Players service. In Vortex Studio 0.3.3 it is a
+> distinct proxy table from `game:GetService("Players")`.
+
+<br/>
+
 ## Methods
 
 ### GetService()
@@ -104,7 +114,6 @@ Services of `game`.
 ### Workspace
 
 > `Instance`
->
 > The Workspace is the root object that holds anything that is currently in the world. [Workspace](/content/reference/classes/workspace.md)
 
 <br/>
@@ -139,7 +148,7 @@ Services of `game`.
 
 > `Instance`
 >
-> Stub. [ServerScriptService](/content/reference/classes/server-script-service.md)
+> ServerScriptService contains [Scripts](/content/reference/classes/script.md) that run when the server starts. [ServerScriptService](/content/reference/classes/server-script-service.md)
 
 <br/>
 
@@ -147,7 +156,7 @@ Services of `game`.
 
 > `Instance`
 >
-> lighting is the game service that controls basic rendering and atmospherics. [Lighting](/content/reference/classes/lighting.md)
+> Lighting is the game service that controls basic rendering and atmospherics. [Lighting](/content/reference/classes/lighting.md)
 
 <br/>
 

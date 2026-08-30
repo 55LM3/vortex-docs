@@ -28,6 +28,7 @@ description: A service that provides access to player input.
 <summary><b>Events</b></summary>
 
 - [InputBegan](#inputbegan): [`Signal`](/content/reference/datatypes/signal.md)
+- [InputEnded](#inputended): [`Signal`](/content/reference/datatypes/signal.md)
 
 </details>
 
@@ -125,6 +126,20 @@ UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
     end
 end)
 ```
+
+### InputEnded
+
+```luau
+UserInputService.InputEnded(input: InputObject, gameProcessedEvent: boolean)
+```
+
+The signal is exposed in a `LocalScript` when an input ends. Delivery behavior
+has not yet been independently tested.
+
+#### Parameters
+
+- `input`: [`InputObject`](/content/reference/datatypes/input-object.md) — details about the input that ended.
+- `gameProcessedEvent`: `Boolean` — whether the engine already handled the input.
 
 ## Testing Notes
 

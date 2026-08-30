@@ -80,7 +80,6 @@ Properties of a Part, in the order they appear on Vortex Studio.
 - [Changed](#changed): [`Signal`](/content/reference/datatypes/signal.md)
 - [Touched](#touched): [`Signal`](/content/reference/datatypes/signal.md)
 - [TouchEnded](#touchended): [`Signal`](/content/reference/datatypes/signal.md)
-
 </details>
 
 ## Properties
