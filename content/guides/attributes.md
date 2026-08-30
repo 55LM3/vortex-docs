@@ -61,6 +61,13 @@ local Id = Part:GetAttribute("Id")
 print(Id)
 ```
 
+___________________
+### GetAttributes
+GetAttributes returns a dictionary of the attributes in an Instance.
+
+___________________
+### GetAttributeChangedSignal
+This event fires whenever a Attribute is changed.
 
 ### Creating Attributes
 Stub
