@@ -26,8 +26,8 @@ current public build.
 `LeftShift`, `LeftSuper`, `M`, `Minus`, `N`, `Nine`, `O`, `One`, `P`,
 `Period`, `Q`, `Quote`, `R`, `Return`, `Right`, `RightAlt`, `RightBracket`,
 `RightControl`, `RightShift`, `RightSuper`, `S`, `Semicolon`, `Seven`, `Six`,
-`Slash`, `Space`, `T`, `Tab`, `Three`, `Two`, `U`, `Up`, `V`, `W`, `X`, `Y`,
-`Z`, `Zero`
+`Slash`, `Space`, `T`, `Tab`, `Three`, `Two`, `U`, `Unknown`, `Up`, `V`, `W`,
+`X`, `Y`, `Z`, `Zero`
 
 ### Material
 
@@ -45,3 +45,32 @@ current public build.
 
 `Focus`, `Gamepad1`, `Keyboard`, `MouseButton1`, `MouseButton2`,
 `MouseButton3`, `MouseMovement`, `MouseWheel`, `None`, `Touch`
+
+## EnumType Methods
+
+Each enum group, such as `Enum.KeyCode`, exposes these lookup methods.
+
+### FromName()
+
+> [`EnumItem`](/content/reference/datatypes/enumitem.md) | `nil`
+>
+> `enumType:FromName(name: String)`
+>
+> Returns the item with the given name, or `nil` when the name is not part of
+> the enum group.
+
+### FromValue()
+
+> [`EnumItem`](/content/reference/datatypes/enumitem.md)
+>
+> `enumType:FromValue(value: Number)`
+>
+> Returns the item with the given integral value.
+
+### GetEnumItems()
+
+> `{ EnumItem }`
+>
+> `enumType:GetEnumItems()`
+>
+> Returns a table containing the items in the enum group.

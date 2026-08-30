@@ -29,6 +29,19 @@ Properties of a `Vector3`.
 </details>
 
 <details>
+<summary><b>Constants</b></summary>
+Constants of a `Vector3`.
+<br><br>
+
+* [zero](#zero): `Vector3`
+* [one](#one): `Vector3`
+* [xAxis](#xaxis): `Vector3`
+* [yAxis](#yaxis): `Vector3`
+* [zAxis](#zaxis): `Vector3`
+
+</details>
+
+<details>
 <summary><b>Constructors</b></summary>
 Constructors of a `Vector3`.
 <br><br>
@@ -87,6 +100,58 @@ Methods of a `Vector3`.
 > `Vector3`
 >
 > The normalized vector.
+
+<br/>
+
+## Constants
+
+### zero
+
+> `Vector3`
+>
+> `Vector3.zero`
+>
+> The vector `(0, 0, 0)`.
+
+<br/>
+
+### one
+
+> `Vector3`
+>
+> `Vector3.one`
+>
+> The vector `(1, 1, 1)`.
+
+<br/>
+
+### xAxis
+
+> `Vector3`
+>
+> `Vector3.xAxis`
+>
+> The unit vector along the X axis, `(1, 0, 0)`.
+
+<br/>
+
+### yAxis
+
+> `Vector3`
+>
+> `Vector3.yAxis`
+>
+> The unit vector along the Y axis, `(0, 1, 0)`.
+
+<br/>
+
+### zAxis
+
+> `Vector3`
+>
+> `Vector3.zAxis`
+>
+> The unit vector along the Z axis, `(0, 0, 1)`.
 
 <br/>
 
@@ -160,10 +225,11 @@ Vector3.new(1, 2, 3) + Vector3.new(1, 2, 3)
 Vector3.new(1, 2, 3) - Vector3.new(1, 2, 3)
 Vector3.new(1, 2, 3) * 2
 Vector3.new(1, 2, 3) / 2
+-Vector3.new(1, -2, 3)
 ```
 
 The tested results were `(5, 7, 9)`, `(3, 3, 3)`, `(2, 4, 6)`, and `(4, 3, 2)`
-respectively.
+respectively; unary negation returned `(-1, 2, -3)`.
 
 The probes observed `Vector3.new(1, 0, 0):Cross(Vector3.new(0, 1, 0))`
 returning `(0, 0, 1)`, `Vector3.new(1, 2, 3):Dot(Vector3.new(4, 5, 6))`
