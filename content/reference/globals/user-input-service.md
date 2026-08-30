@@ -1,68 +1,137 @@
 ---
 title: UserInputService
-description: User Input Service is used to detect a players device, and also used to detect inputs from the Player.
+description: A service that provides access to player input.
 ---
 
-## Methods
-### IsKeyDown
-Returns whether a certain is being held down.
+## Summary
 
+<details>
+<summary><b>Properties</b></summary>
+
+- [ClassName](#classname): `String`
+- [GamepadEnabled](#gamepadenabled): `Boolean`
+- [KeyboardEnabled](#keyboardenabled): `Boolean`
+- [MouseEnabled](#mouseenabled): `Boolean`
+- [Name](#name): `String`
+- [TouchEnabled](#touchenabled): `Boolean`
+
+</details>
+
+<details>
+<summary><b>Methods</b></summary>
+
+- [IsKeyDown](#iskeydown): `Boolean`
+
+</details>
+
+<details>
+<summary><b>Events</b></summary>
+
+- [InputBegan](#inputbegan): [`Signal`](/content/reference/datatypes/signal.md)
+
+</details>
+
+## Properties
+
+### ClassName
+
+> `String`
+>
+> The runtime class name of the service.
+
+### GamepadEnabled
+
+> `Boolean`
+>
+> Whether gamepad input is enabled.
+
+### KeyboardEnabled
+
+> `Boolean`
+>
+> Whether keyboard input is enabled.
+
+### MouseEnabled
+
+> `Boolean`
+>
+> Whether mouse input is enabled.
+
+### Name
+
+> `String`
+>
+> The service name shown by the runtime.
+
+### TouchEnabled
+
+> `Boolean`
+>
+> Whether touch input is enabled.
+
+## Methods
+
+### IsKeyDown()
+
+```luau
+UserInputService:IsKeyDown(keyCode: Enum.KeyCode): boolean
 ```
-UserInputService:IsKeyDown(KeyCode: Enum.KeyCode): Boolean
-```
+
+Returns whether the key corresponding to the `keyCode` is currently held down.
+
 #### Parameters
-```
-KeyCode: Enum.KeyCode
-The Enum.KeyCode of the key
-```
-#### Returns
-```
-Boolean
-Whether the specified key is being held down or not.
-```
-This method returns true if they are holding down the specified key, otherwise it returns false.
-#### Examples
+
+- `keyCode`: `Enum.KeyCode` — the key to inspect.
+
 ```luau
 local UserInputService = game:GetService("UserInputService")
 
 UserInputService.InputBegan:Connect(function()
-   if UserInputService:IsKeyDown(Enum.KeyCode.LeftShift) then
-  	 print("Left Shift")
-	 end
+    if UserInputService:IsKeyDown(Enum.KeyCode.LeftShift) then
+        print("Left Shift")
+    end
 end)
-
 ```
 
 ## Events
+
 ### InputBegan
-Fires whenever the Player interacts with an input device.
+
+```luau
+UserInputService.InputBegan(input: InputObject, gameProcessedEvent: boolean)
 ```
-UserInputService.InputBegan(Input: InpitObject, GameProcessedEvent: Boolean)
-```
+
+Fires once per key press, regardless of the key. `input` contains details about the input, including
+`KeyCode` and `UserInputType`, which depends on the input device used.
+`gameProcessedEvent` is `true` when the engine has already handled the input.
+`IsKeyDown(input.KeyCode)` returns `true` if called inside the event
 
 #### Parameters
-```
-Input: Input Object
-An Input object which contains information about the users input.
-```
-```
-GameProcessedEvent: Boolean
-Whether the Engine observed an action and acted on it. If a button was touched or clicked from this input, GameProcessedEvent will be true.
-```
 
-#### Returns
+- `input`: [`InputObject`](/content/reference/datatypes/input-object.md) — details about the input that fired the event.
+- `gameProcessedEvent`: `Boolean` — whether the engine already handled the input.
 
-#### Examples
 ```luau
 local UserInputService = game:GetService("UserInputService")
 
-UserInputService.InputBegan:Connect(function(Input, GameProccessedEvent)
-    if GameProccessedEvent then
-       print("Game Proccessed Event")
+UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+    if gameProcessedEvent then
+        print("Game Processed Event")
+        return
     end
-    
-    if Input.KeyCode == Enum.KeyCode.R then
+
+    if input.KeyCode == Enum.KeyCode.R then
         print("R")
     end
 end)
 ```
+
+## Testing Notes
+
+These observations are from Vortex Studio 0.3.3, the current public build, and
+may differ in later releases.
+
+`UserInputService` is available to `LocalScripts`; retrieving it from a
+`Script` returns no service. During `InputBegan`, keyboard input provides a
+`KeyCode` and `UserInputType.Keyboard`, and `IsKeyDown(input.KeyCode)` returns
+`true` while the key is held.

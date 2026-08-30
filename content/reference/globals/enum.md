@@ -3,15 +3,10 @@ title: Enum
 description: The runtime enum namespace.
 ---
 
-## Verified runtime compatibility
+## Summary
 
-The following enum groups and members were present in both `Script` and
-`LocalScript`. This is the observed Vortex surface, not the full Roblox enum
-catalogue.
-
-The broad enum probe found 7 of 516 documented enum groups and 118 of 2,992
-documented enum items. Every member listed below was readable in both tested
-contexts.
+The following enum groups and members are exposed by Vortex Studio 0.3.3, the
+current public build.
 
 ### EasingDirection
 

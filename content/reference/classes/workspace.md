@@ -19,39 +19,83 @@ Additionally, can be used to raycast.
 <summary><b>Properties</b></summary>
 Properties of a Workspace, in the order they appear on Vortex Studio
 <br><br>
-<ul>
-<details>
-<summary><b>Appearance</b></summary>
+
+- [ClassName](#classname): `String`
+- [Name](#name): `String`
 </details>
 
 <details>
-<summary><b>Transform</b></summary>
+<summary><b>Methods</b></summary>
+Methods of a `Workspace`.
+<br><br>
+
+- [FindFirstChild](#findfirstchild): [`Instance`](/content/reference/classes/instance.md) | `nil`
+- [GetChildren](#getchildren): `{ Instance }`
+- [WaitForChild](#waitforchild): [`Instance`](/content/reference/classes/instance.md)
 
 </details>
 
-</ul>
-</details>
+## Properties
+
+### ClassName
+> `String` \
+\
+The runtime class name of the service.
+
+<br/>
 
 
-## Verified runtime compatibility
+### Name
+> `String` \
+\
+The service name shown by the runtime.
 
-The following surface was verified in both `Script` and `LocalScript`.
+<br/>
 
-### Properties
+## Methods
 
-- `ClassName`: `String`
-- `Name`: `String`
+### FindFirstChild()
+> [`Instance`](/content/reference/classes/instance.md) | `nil` \
+\
+`workspace:FindFirstChild(name: String)` \
+\
+Returns the first direct child with the supplied `name`, or `nil` when none is
+found.
 
-### Methods
+#### Parameters
 
-- `FindFirstChild` — callable member.
-- `GetChildren` — callable member.
-- `WaitForChild` — callable member.
+- `name`: `String` — the child name to find.
 
-Other documented `Workspace` methods, including `Raycast`, were not exposed by
-the tested member probe.
+<br/>
 
-> [!WARNING]
-> A temporary Part could be parented to `Workspace`, and `WaitForChild` found
-> it, but `FindFirstChild` returned `nil` and `GetChildren` omitted it in both
-> tested contexts.
+
+### GetChildren()
+> `{ Instance }` \
+\
+Returns the direct children of `Workspace`.
+
+<br/>
+
+
+### WaitForChild()
+> [`Instance`](/content/reference/classes/instance.md) \
+\
+`workspace:WaitForChild(name: String)` \
+\
+Waits for and returns a direct child with the supplied `name`.
+
+#### Parameters
+
+- `name`: `String` — the child name to wait for.
+
+
+<br/>
+
+## Testing Notes
+
+These observations are from Vortex Studio 0.3.3, the current public build, and
+may differ in later releases.
+
+`Raycast` was not exposed. A temporary `Part` can be parented to `Workspace`,
+and `WaitForChild` resolves it. `FindFirstChild` returns `nil` and
+`GetChildren` omits it.

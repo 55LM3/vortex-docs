@@ -11,7 +11,7 @@ Written by Kindtracker on August 28th, 2026
 -->
 
 > [!NOTE] 
-> There will be more things (methods, constructors, properties, etc) in the future. This is based on leaks.
+> There will be more things (methods, constructors, properties, etc.) in the future.
 
 ## Summary
 
@@ -34,6 +34,17 @@ Constructors of a `Vector3`.
 <br><br>
 
 * [new(X: `Number`, Y: `Number`, Z: `Number`)](#newx-number-y-number-z-number): `Vector3`
+
+</details>
+
+<details>
+<summary><b>Methods</b></summary>
+Methods of a `Vector3`.
+<br><br>
+
+* [Cross](#cross): `Vector3`
+* [Dot](#dot): `Number`
+* [Lerp](#lerp): `Vector3`
 
 </details>
 
@@ -63,6 +74,22 @@ Constructors of a `Vector3`.
 
 <br/>
 
+### Magnitude
+
+> `Number`
+>
+> The vector magnitude.
+
+<br/>
+
+### Unit
+
+> `Vector3`
+>
+> The normalized vector.
+
+<br/>
+
 ## Constructors
 
 ### new(X: `Number`, Y: `Number`, Z: `Number`)
@@ -75,19 +102,56 @@ Constructors of a `Vector3`.
 
 ## Verified runtime compatibility
 
-In both `Script` and `LocalScript`, `Vector3.new` and the properties `X`, `Y`,
-`Z`, `Magnitude`, and `Unit` were available.
+In Vortex Studio 0.3.3, the current public build, `Vector3.new` and the
+properties `X`, `Y`, `Z`, `Magnitude`, and `Unit` were available in both
+`Script` and `LocalScript`.
 
-`Vector3.FromAxis` and `Vector3.FromNormalId` were not available in the tested
-runtime; the constructor probe found 1 of 3 checked constructors.
+## Methods
 
-### Methods
+### Cross()
 
-- `Cross(other: Vector3): Vector3`
-- `Dot(other: Vector3): Number`
-- `Lerp(other: Vector3, alpha: Number): Vector3`
+> `Vector3`
+>
+> `vector:Cross(other: Vector3)`
+>
+> Returns the cross product of `vector` and `other`.
 
-### Operators
+#### Parameters
+
+- `other`: `Vector3` — the vector to cross with.
+
+<br/>
+
+### Dot()
+
+> `Number`
+>
+> `vector:Dot(other: Vector3)`
+>
+> Returns the dot product of `vector` and `other`.
+
+#### Parameters
+
+- `other`: `Vector3` — the vector to dot with.
+
+<br/>
+
+### Lerp()
+
+> `Vector3`
+>
+> `vector:Lerp(other: Vector3, alpha: Number)`
+>
+> Returns a linear interpolation between `vector` and `other`.
+
+#### Parameters
+
+- `other`: `Vector3` — the target vector.
+- `alpha`: `Number` — the interpolation amount, from `0` to `1`.
+
+<br/>
+
+## Operators
 
 The following expressions completed successfully:
 
@@ -106,18 +170,9 @@ returning `(0, 0, 1)`, `Vector3.new(1, 2, 3):Dot(Vector3.new(4, 5, 6))`
 returning `32`, and interpolation from `(0, 0, 0)` to `(8, 4, 2)` at `0.25`
 returning `(2, 1, 0.5)`.
 
-### Magnitude
+## Testing Notes
 
-> `Number`
->
-> The vector magnitude.
+These observations are from Vortex Studio 0.3.3, the current public build, and
+may differ in later releases.
 
-<br/>
-
-### Unit
-
-> `Vector3`
->
-> The normalized vector.
-
-<br/>
+`Vector3.FromAxis` and `Vector3.FromNormalId` are not exposed.

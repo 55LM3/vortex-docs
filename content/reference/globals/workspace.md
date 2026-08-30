@@ -14,11 +14,6 @@ The `workspace` keyword represents game's root `Workspace` container, which cont
 
 It can be used to index specific instances or to collect objects quickly, in respect to the server or client's current understanding.
 
-## Verified runtime compatibility
-
-`workspace` was present in both `Script` and `LocalScript` and refers to the
-same available `Workspace` service obtained through `game:GetService`.
-
 > [!WARNING]
 > Instances may be unavailable when loading. Make sure instances exist before accessing.
 > Failure to do so may result in runtime errors.

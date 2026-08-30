@@ -5,17 +5,27 @@ description: The root instance of a game.
 
 <!-- 
 Game
-Revision 1
+Revision 2
 
 Written by Kindtracker on August 29th, 2026
+Edited by MtcLuna05 on August 30th, 2026
 -->
 
 > [!NOTE]
-> There will be more things (methods, constructors, properties, etc.) in the future. This is based on leaks.
+> There will be more things (methods, constructors, properties, etc.) in the future.
 
 `game` is the root instance and provides access to services.
 
 ## Summary
+
+<details>
+<summary><b>Properties</b></summary>
+Properties of `game`.
+<br><br>
+
+* [Workspace](#workspace): [`Workspace`](/content/reference/classes/workspace.md)
+
+</details>
 
 <details>
 <summary><b>Methods</b></summary>
@@ -23,6 +33,15 @@ Methods of `game`.
 <br><br>
 
 * [GetService(serviceName: `String`)](#getservice): `Instance`
+
+</details>
+
+<details>
+<summary><b>Callbacks</b></summary>
+Callbacks of `game`.
+<br><br>
+
+* [OnClose](#onclose): `Function` | `nil`
 
 </details>
 
@@ -40,83 +59,52 @@ Services of `game`.
 * [Debris](/content/reference/classes/debris.md)
 * [RunService](/content/reference/classes/run-service.md)
 * [TweenService](/content/reference/classes/tween-service.md)
-* [UserInputService](/content/reference/classes/user-input-service.md)
+* [UserInputService](/content/reference/globals/user-input-service.md)
 
 </details>
 
-## Methods
+## Properties
 
-### GetService(serviceName: `String`)
+### Workspace
 
-> `Instance`
+> [`Workspace`](/content/reference/classes/workspace.md)
 >
-> Returns the service with specified name.
+> The root `Workspace` service.
 
 <br/>
 
-## Verified runtime compatibility
+## Methods
 
-`game:GetService("Workspace")` accepted its service-name parameter and
-returned a `Workspace` named `Workspace` in both tested execution contexts.
-The readable `game.Workspace` property reported the same class and name.
+### GetService()
 
-### Properties
+> `Instance`
+>
+> `game:GetService(serviceName: String)`
+>
+> Returns the service with the specified name.
 
-- `Workspace` — readable property on `game`.
+#### Parameters
 
-### Callbacks
+- `serviceName`: `String` — the name of the service to retrieve.
 
-- `OnClose` — initially `nil` in both tested contexts, assignable to a
-  function, and restorable to its original value. The probe does not invoke
-  the callback.
+<br/>
 
-### Service lookup identity
+## Callbacks
 
-In the tested runtime, two `game:GetService` calls for each of `Workspace`,
-`Players`, `ReplicatedStorage`, `StarterPlayerScripts`, `ServerScriptService`,
-and the client-only `UserInputService` did **not** compare equal. Store a
-lookup result instead of using repeated-lookup identity comparisons. `Debris`,
-`RunService`, and `TweenService` did compare equal across repeated lookups.
+### OnClose
 
-### Service discovery coverage
+> `Function` | `nil`
+>
+> An optional callback that can be assigned before the game closes.
 
-The discovery probe attempted `game:GetService` with 160 candidate service
-names. It found nine services in `LocalScript` and eight in `Script`:
-`Workspace`, `Players`, `ReplicatedStorage`, `StarterPlayerScripts`,
-`ServerScriptService`, `Debris`, `RunService`, and `TweenService` in both
-contexts, plus `UserInputService` in `LocalScript`. `Lighting` was not
-available in either context. This is a candidate sweep, not a public service
-enumeration API.
-
-### Broad member-probe coverage
-
-The following counts describe the documented members checked by the broad
-property and method probes. They are coverage metrics, not a complete API
-inventory.
-
-| Value | Properties | Methods |
-| --- | ---: | ---: |
-| `game` | 1/25 | 1/36 |
-| `Workspace` | 2/69 | 3/72 |
-| `Part` | 12/82 | 13/63 |
-| `Instance` (tested through Part) | 2/10 | 2/2 |
-| `Players` | 3/20 in LocalScript; 2/20 in Script | 0/34 |
-| `ReplicatedStorage` | 2/10 | 3/34 |
-| `StarterPlayerScripts` | 2/10 | 3/34 |
-| `ServerScriptService` | 2/11 | 3/34 |
-| `Debris` | 0/11 | 0/34 |
-| `RunService` | 0/12 | 0/34 |
-| `TweenService` | 0/10 | 0/34 |
-| `UserInputService` | 6/29 in LocalScript; unavailable in Script | 0/34 |
-
-Some focused probes subsequently verified members not included in those broad
-lists, including `Players:GetPlayers` and `UserInputService:IsKeyDown`.
+<br/>
 
 ## Services
 
 ### Workspace
 
 > `Instance`
+>
 > The Workspace is the root object that holds anything that is currently in the world. [Workspace](/content/reference/classes/workspace.md)
 
 <br/>
@@ -125,7 +113,8 @@ lists, including `Players:GetPlayers` and `UserInputService:IsKeyDown`.
 
 > `Instance`
 >
-> Stub. [Players](/content/reference/classes/players.md)
+> The service that contains the currently connected player objects.
+> [Players](/content/reference/classes/players.md)
 
 <br/>
 
@@ -133,7 +122,8 @@ lists, including `Players:GetPlayers` and `UserInputService:IsKeyDown`.
 
 > `Instance`
 >
-> Stub. [ReplicatedStorage](/content/reference/classes/replicated-storage.md)
+> A container for instances loaded by both the server and the client.
+> [ReplicatedStorage](/content/reference/classes/replicated-storage.md)
 
 <br/>
 
@@ -161,34 +151,11 @@ lists, including `Players:GetPlayers` and `UserInputService:IsKeyDown`.
 
 <br/>
 
-### Debris
+## Testing Notes
 
-> `Instance`
->
-> Available through `game:GetService("Debris")` in both `Script` and `LocalScript`. [Debris](/content/reference/classes/debris.md)
+These observations are from Vortex Studio 0.3.3, the current public build, and
+may differ in later releases.
 
-<br/>
-
-### RunService
-
-> `Instance`
->
-> Available through `game:GetService("RunService")` in both `Script` and `LocalScript`. [RunService](/content/reference/classes/run-service.md)
-
-<br/>
-
-### TweenService
-
-> `Instance`
->
-> Available through `game:GetService("TweenService")` in both `Script` and `LocalScript`. [TweenService](/content/reference/classes/tween-service.md)
-
-<br/>
-
-### UserInputService
-
-> `Instance`
->
-> Available through `game:GetService("UserInputService")` in `LocalScript`. It was not available in the tested `Script` context. In the tested client runtime, repeated lookups did not compare equal. [UserInputService](/content/reference/classes/user-input-service.md)
-
-<br/>
+`game.Workspace` and `game:GetService("Workspace")` both report `ClassName`
+and `Name` as `Workspace`. `game.OnClose` starts as `nil`; assigning a
+function succeeds, but callback delivery has not been established.

@@ -6,8 +6,9 @@ description: Standard-library functions verified in Vortex.
 ## Verified runtime compatibility
 
 The following standard-library functions were present in both `Script` and
-`LocalScript`. They were subsequently called by the deterministic behavior
-probe in both contexts; every call listed below succeeded with the same result.
+`LocalScript` in Vortex Studio 0.3.3, the current public build. They were
+subsequently called by the deterministic behavior probe in both contexts; every
+call listed below succeeded with the same result.
 
 ### coroutine
 
@@ -32,19 +33,9 @@ probe in both contexts; every call listed below succeeded with the same result.
 `freeze`, `getn`, `insert`, `isfrozen`, `maxn`, `move`, `pack`, `remove`,
 `sort`, `unpack`
 
-The `bit32`, `buffer`, `debug`, `os`, `utf8`, and `vector` library functions
-covered by the probe were not available in that runtime build.
-
-The global-value pass found `Enum`, `game`, `workspace`, `script`, and `task`.
-`shared` was not available. In the checked library lists, `math.isfinite`,
-`math.isinf`, `math.isnan`, `task.cancel`, `task.desynchronize`, and
-`task.synchronize` were also unavailable.
-
 ## Observed deterministic behavior
 
-These are observations for the exact inputs used by
-`standard_library_behavior_probe.lua`, rather than a claim that the full
-Roblox/Luau standard-library contract is implemented.
+These are observations for the exact inputs tested through a local script, rather than a claim that the full Luau standard-library contract is implemented.
 
 ### coroutine
 
@@ -104,3 +95,12 @@ Roblox/Luau standard-library contract is implemented.
 | `random()` | a `number` |
 | `sin(0)`, `sinh(0)`, `sqrt(9)`, `tan(0)`, `tanh(0)` | `0`, `0`, `3`, `0`, `0` |
 | `randomseed(12345)` | no return values |
+
+## Testing Notes
+
+These observations are from Vortex Studio 0.3.3, the current public build, and
+may differ in later releases.
+
+The `bit32`, `buffer`, `debug`, `os`, `utf8`, and `vector` libraries are not
+exposed. `shared`, `math.isfinite`, `math.isinf`, `math.isnan`, `task.cancel`,
+`task.desynchronize`, and `task.synchronize` are also not exposed.

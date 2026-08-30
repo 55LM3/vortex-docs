@@ -12,7 +12,7 @@ Written by Kindtracker on August 28th, 2026
 -->
 
 > [!NOTE]
-> There will be more things (methods, constructors, properties, etc.) in the future. This is based on leaks.
+> There will be more things (methods, constructors, properties, etc.) in the future.
 
 ## Summary
 
@@ -34,6 +34,15 @@ Constructors of a `Color3`.
 
 * [new(R: `Number`, G: `Number`, B: `Number`)](#newr-number-g-number-b-number): `Color3`
 * [fromRGB(R: `Number`, G: `Number`, B: `Number`)](#fromrgbr-number-g-number-b-number): `Color3`
+
+</details>
+
+<details>
+<summary><b>Methods</b></summary>
+Methods of a `Color3`.
+<br><br>
+
+* [Lerp](#lerp): `Color3`
 
 </details>
 
@@ -81,22 +90,26 @@ Constructors of a `Color3`.
 
 <br/>
 
-## Verified runtime compatibility
+## Methods
 
-`Color3.new` and `Color3.fromRGB` were present in both `Script` and
-`LocalScript`. `Color3.fromRGB(64, 128, 255)` returned components
-`(64 / 255, 128 / 255, 1)`.
+### Lerp()
 
-The constructor probe found 2 of 4 checked constructors: `new` and `fromRGB`.
+> `Color3`
+>
+> `color:Lerp(other: Color3, alpha: Number)`
+>
+> Returns a component-wise linear interpolation between `color` and `other`.
 
-`Color3.Lerp(other, alpha)` performs component-wise linear interpolation. For
-example, interpolating `(0, 0, 0)` toward `(1, 0.5, 0.25)` with `0.25` returned
-`(0.25, 0.125, 0.0625)`.
+#### Parameters
 
-Adding two `Color3` values fails because Vortex represents them as tables
-without an addition metamethod.
+- `other`: `Color3` — the target color.
+- `alpha`: `Number` — the interpolation amount, from `0` to `1`.
 
-> [!NOTE]
-> Runtime probes in both `Script` and `LocalScript` verified `new` and
-> `fromRGB`. `fromHSV` and `fromHex` were not available in the tested Vortex
-> runtime.
+<br/>
+
+## Testing Notes
+
+The previously listed `Color3.fromHSV` and `Color3.fromHex` constructors were
+removed from this reference because they were not exposed in Vortex Studio
+0.3.3, the current public build. Runtime availability may change in later
+releases.
