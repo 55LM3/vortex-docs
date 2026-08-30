@@ -1,61 +1,39 @@
 ---
 title: Player
-description: Holds information about a connected client.
+description: An instance holding information about a connected client.
 ---
-
-The current client player is available as `game:GetService("Players").LocalPlayer`
-in a `LocalScript`.
 
 ## Summary
 
-<details>
-<summary><b>Properties</b></summary>
-Properties of a `Player`.
-<br><br>
+Represents a connected client. The current client is available through the
+[Players](https://create.playvortex.io/reference/classes/players/) service as
+`LocalPlayer`.
 
-* [Character](#character): [`Model`](/content/reference/classes/model.md)
-* [ClassName](#classname): `String`
-* [Name](#name): `String`
+### Example
 
-</details>
+```luau
+-- LocalScript
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+print("Hello, " .. player.Name .. "!")
+```
 
 ## Properties
 
-### Character
+- `Name` - the player's name;
+- `ClassName` - `"Player"` for the current client projection;
+- `Character` - the current character `Model`, when available;
+- `Parent` - reads as `nil` for the observed `LocalPlayer`. Assigning it is
+  client-local and does not insert the Player into Workspace hierarchy queries.
 
-> [`Model`](/content/reference/classes/model.md)
->
-> The Player's current character model.
+## Methods
 
-<br/>
+`GetChildren` is not exposed on the current Vortex `Player` projection.
 
-### ClassName
+## Vortex Studio 0.3.3 notes
 
-> `String`
->
-> The Player's class name, `"Player"`.
-
-<br/>
-
-### Name
-
-> `String`
->
-> The Player's name.
-
-## Testing Notes
-
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
-
-`Players.LocalPlayer` is available in a `LocalScript` and is `nil` in a
-`Script`.
-
-The observed `Character` was a `Model` named after the player. Its `Humanoid`
-and `HumanoidRootPart` were directly readable and matched
-`character:FindFirstChild("Humanoid")` and
-`character:FindFirstChild("HumanoidRootPart")` respectively.
-
-`Character:GetChildren()` returned three anonymous `Instance` wrappers rather
-than the named direct references. The observed `HumanoidRootPart` exposed a
-`Position`, but its `CFrame` read as `nil`.
+`Players.LocalPlayer` is available in a `LocalScript` and `nil` in a normal
+server `Script`. The observed `Character` is a `Model` named after the player;
+its `Humanoid` and `HumanoidRootPart` are directly readable.

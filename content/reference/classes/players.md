@@ -5,61 +5,34 @@ description: A container that holds all players currently connected as Player ob
 
 ## Summary
 
-<details>
-<summary><b>Properties</b></summary>
-<br>
+A service representing connected clients as
+[Player](https://create.playvortex.io/reference/classes/player/) instances.
 
-- [ClassName](#classname): `String`
-- [LocalPlayer](#localplayer): [`Player`](/content/reference/classes/player.md) | `nil`
-- [Name](#name): `String`
+### Example
 
-</details>
+```luau
+-- LocalScript
 
-<details>
-<summary><b>Methods</b></summary>
-<br>
+local Players = game:GetService("Players")
 
-- [GetPlayers](#getplayers): `{ Player }`
-
-</details>
+local everyPlayer = Players:GetPlayers()
+local player = Players.LocalPlayer
+```
 
 ## Properties
 
-### ClassName
-> `String` \
-\
-The runtime class name of the service.
-
-<br/>
-
-
-### LocalPlayer
-> [`Player`](/content/reference/classes/player.md) | `nil` \
-\
-The `Player` for the local client, or `nil` when no local player is available.
-
-<br/>
-
-
-### Name
-> `String` \
-\
-The service name shown by the runtime.
-
-<br/>
+- `Name` - the name of the service;
+- `ClassName` - the runtime class name;
+- `LocalPlayer` - available in a `LocalScript`; otherwise `nil`.
 
 ## Methods
 
-### GetPlayers()
-> `{ Player }` \
-\
-Returns a table containing the currently connected players.
+- `GetPlayers(): { Player }` - returns the currently visible player list.
 
-<br/>
+`GetChildren` is not exposed by the current Vortex Players service.
 
-## Testing Notes
+## Vortex Studio 0.3.3 notes
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
-
-`LocalScripts` returned only the current player. `Scripts` returned no players.
+In a `LocalScript`, `GetPlayers()` returned the current player. In a server
+`Script`, it remained an empty table across repeated polls, and no public
+lookup route resolved the numeric sender ID received by a `RemoteEvent`.

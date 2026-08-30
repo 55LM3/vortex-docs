@@ -1,33 +1,89 @@
 ---
 title: RemoteFunction
-description: A request/response remote endpoint between client and server contexts.
+description: A function that is invoked and returns values from the server to the client, and vice-versa.
 ---
 
 ## Summary
 
-`RemoteFunction` is the request/response counterpart to
-[`RemoteEvent`](/content/reference/classes/remote-event.md). Its client
-`InvokeServer` member is exposed, and assigning `OnServerInvoke` succeeds in a
-Script for an editor-authored remote in `ReplicatedStorage`.
+Differently from [RemoteEvents](https://create.playvortex.io/reference/classes/remote-event/), `RemoteFunctions` allows data to be computed inside a function call and returned with the computed values. `InvokeAllClients` does not exist, since yielding until every player returns a value is not guaranteed.
+
+### Example
+
+```luau
+-- server
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+
+local GetPiFromDigits = ReplicatedStorage:WaitForChild("GetPiFromDigits")
+
+-- Roblox-style targeting example; see the Vortex notes below.
+local random_player = Players:GetChildren()[math.random(1, #Players:GetChildren())]
+local pi = GetPiFromDigits:InvokeClient(random_player, 5)
+
+print(random_player.Name .. " replied with: " .. pi)
+```
+
+```luau
+-- LocalScript
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local GetPiFromDigits = ReplicatedStorage:WaitForChild("GetPiFromDigits")
+
+function compute_pi(digits)
+    -- magic
+    local col = math.floor(digits * 10 / 3)
+    local array = {}
+    for i = 1, col, 1 do table.insert(array, 2) end
+    local output = {}
+
+    for _ = 1, digits, 1 do
+        local carry = 0
+        for i = col - 1, 0, -1 do
+            local num = array[i] * 10 + carry
+            local denom = i * 2 + 1
+            arr[i] = num % denom
+            carry = math.floor(num / denom)
+        end
+
+        num = arr[1] * 10 + carry
+        arr[1] = num % 10
+        output.append(tostring(math.floor(num / 10)))
+    end
+
+    local result = output[1] .. "."
+    for i = 2, #output, 1 do
+        result ..= output[i]
+    end
+
+    return result
+end
+
+GetPiFromDigits.OnClientInvoke = compute_pi
+```
 
 ## Methods
 
-- `InvokeServer(...arguments: any): ...any` — exposed on the client.
-- `InvokeClient(...arguments: any): ...any` — documented upstream but its
-  Vortex delivery behavior has not been established.
+- `InvokeClient(player: Player, arguments: Tuple) : Tuple` - Invokes data from
+  the server to the client;
+- `InvokeServer(arguments: Tuple) : Tuple` - Invokes data from the client to
+  the server.
 
 ## Callbacks
 
-- `OnServerInvoke` — assign a function to handle `InvokeServer` calls.
-- `OnClientInvoke` — documented upstream; its Vortex delivery behavior has not
-  been established.
+- `OnClientInvoke(arguments: Tuple) : Tuple` - Writable callback invoked from
+  the server to the client;
+- `OnServerInvoke(senderId: Number, arguments: Tuple) : Tuple` - Writable
+  callback invoked from the client to the server.
 
-## Testing Notes
+## Vortex Studio 0.3.3 notes
 
-These observations are from Vortex Studio 0.3.3 and may differ in later
-releases.
+`InvokeServer` is exposed on the client and assigning `OnServerInvoke` succeeds
+in a Script for an editor-authored remote in `ReplicatedStorage`. However,
+`InvokeServer(LocalPlayer)` is rejected before delivery because Instances cannot
+currently be sent through remotes. A successful primitive request/response
+round trip has not yet been established.
 
-`InvokeServer(LocalPlayer)` is rejected before server delivery with “Instances
-cannot be sent through a RemoteEvent yet”. A successful primitive-value
-request/response round trip has not yet been established, so do not rely on it
-for gameplay state.
+The server-side `Players:GetChildren()` route in the example is unavailable in
+Vortex 0.3.3, so `InvokeClient` cannot currently be targeted through the public
+Player API. `OnClientInvoke` and `InvokeClient` delivery are likewise untested.

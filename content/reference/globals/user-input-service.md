@@ -1,88 +1,35 @@
 ---
 title: UserInputService
-description: A service that provides access to player input.
+description: User Input Service is used to detect a players device, and also used to detect inputs from the Player.
 ---
-
-## Summary
-
-<details>
-<summary><b>Properties</b></summary>
-
-- [ClassName](#classname): `String`
-- [GamepadEnabled](#gamepadenabled): `Boolean`
-- [KeyboardEnabled](#keyboardenabled): `Boolean`
-- [MouseEnabled](#mouseenabled): `Boolean`
-- [Name](#name): `String`
-- [TouchEnabled](#touchenabled): `Boolean`
-
-</details>
-
-<details>
-<summary><b>Methods</b></summary>
-
-- [IsKeyDown](#iskeydown): `Boolean`
-
-</details>
-
-<details>
-<summary><b>Events</b></summary>
-
-- [InputBegan](#inputbegan): [`Signal`](/content/reference/datatypes/signal.md)
-- [InputEnded](#inputended): [`Signal`](/content/reference/datatypes/signal.md)
-
-</details>
-
-## Properties
-
-### ClassName
-
-> `String`
->
-> The runtime class name of the service.
-
-### GamepadEnabled
-
-> `Boolean`
->
-> Whether gamepad input is enabled.
-
-### KeyboardEnabled
-
-> `Boolean`
->
-> Whether keyboard input is enabled.
-
-### MouseEnabled
-
-> `Boolean`
->
-> Whether mouse input is enabled.
-
-### Name
-
-> `String`
->
-> The service name shown by the runtime.
-
-### TouchEnabled
-
-> `Boolean`
->
-> Whether touch input is enabled.
 
 ## Methods
 
-### IsKeyDown()
+### IsKeyDown
 
-```luau
-UserInputService:IsKeyDown(keyCode: Enum.KeyCode): boolean
+Returns whether a certain key is being held down.
+
 ```
-
-Returns whether the key corresponding to the `keyCode` is currently held down.
+UserInputService:IsKeyDown(KeyCode: Enum.KeyCode): Boolean
+```
 
 #### Parameters
 
-- `keyCode`: `Enum.KeyCode` — the key to inspect.
+```
+KeyCode: Enum.KeyCode
+The Enum.KeyCode of the key
+```
+
+#### Returns
+
+```
+Boolean
+Whether the specified key is being held down or not.
+```
+
+This method returns true if the specified key is held down, otherwise it returns false.
+
+#### Examples
 
 ```luau
 local UserInputService = game:GetService("UserInputService")
@@ -98,30 +45,35 @@ end)
 
 ### InputBegan
 
-```luau
-UserInputService.InputBegan(input: InputObject, gameProcessedEvent: boolean)
-```
+Fires whenever the Player interacts with an input device.
 
-Fires once per key press, regardless of the key. `input` contains details about the input, including
-`KeyCode` and `UserInputType`, which depends on the input device used.
-`gameProcessedEvent` is `true` when the engine has already handled the input.
-`IsKeyDown(input.KeyCode)` returns `true` if called inside the event
+```
+UserInputService.InputBegan(Input: InputObject, GameProcessedEvent: Boolean)
+```
 
 #### Parameters
 
-- `input`: [`InputObject`](/content/reference/datatypes/input-object.md) — details about the input that fired the event.
-- `gameProcessedEvent`: `Boolean` — whether the engine already handled the input.
+```
+Input: Input Object
+An Input object which contains information about the user's input.
+```
+
+```
+GameProcessedEvent: Boolean
+Whether the Engine observed an action and acted on it. If a button was touched or clicked from this input, GameProcessedEvent will be true.
+```
+
+#### Examples
 
 ```luau
 local UserInputService = game:GetService("UserInputService")
 
-UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
-    if gameProcessedEvent then
+UserInputService.InputBegan:Connect(function(Input, GameProcessedEvent)
+    if GameProcessedEvent then
         print("Game Processed Event")
-        return
     end
 
-    if input.KeyCode == Enum.KeyCode.R then
+    if Input.KeyCode == Enum.KeyCode.R then
         print("R")
     end
 end)
@@ -129,24 +81,42 @@ end)
 
 ### InputEnded
 
-```luau
-UserInputService.InputEnded(input: InputObject, gameProcessedEvent: boolean)
-```
+Fires whenever the Player stops interacting with an input device.
 
-The signal is exposed in a `LocalScript` when an input ends. Delivery behavior
-has not yet been independently tested.
+```
+UserInputService.InputEnded(Input: InputObject, GameProcessedEvent: Boolean)
+```
 
 #### Parameters
 
-- `input`: [`InputObject`](/content/reference/datatypes/input-object.md) — details about the input that ended.
-- `gameProcessedEvent`: `Boolean` — whether the engine already handled the input.
+```
+Input: Input Object
+An Input object which contains information about the user's input.
+```
 
-## Testing Notes
+```
+GameProcessedEvent: Boolean
+Whether the Engine observed an action and acted on it. If a button was touched or clicked from this input, GameProcessedEvent will be true.
+```
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
+#### Examples
 
-`UserInputService` is available to `LocalScripts`; retrieving it from a
-`Script` returns no service. During `InputBegan`, keyboard input provides a
-`KeyCode` and `UserInputType.Keyboard`, and `IsKeyDown(input.KeyCode)` returns
-`true` while the key is held.
+```luau
+local UserInputService = game:GetService("UserInputService")
+
+UserInputService.InputEnded:Connect(function(Input, GameProcessedEvent)
+    if GameProcessedEvent then
+        print("Game Processed Event")
+    end
+
+    print("Input Ended.")
+end)
+```
+
+## Vortex Studio 0.3.3 notes
+
+The service and `InputBegan` are confirmed in a `LocalScript`; a normal server
+`Script` has no UserInputService. `InputEnded` is exposed in a LocalScript, but
+its delivery has not yet been independently established. `InputChanged`,
+`GetMouseLocation`, `MouseBehavior`, and `MouseIconEnabled` are currently not
+exposed.

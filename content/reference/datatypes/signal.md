@@ -1,112 +1,95 @@
 ---
 title: Signal
-description: An event object that invokes connected callbacks.
+description: An object that runs connected functions in a specific way.
 ---
 
-> `Signal`
->
-> An event-based object used to communicate when something happens. A `Signal` can be fired to notify connected functions that an event has occurred.
->
-> Signals are commonly used for handling events and communicating between different parts of a script.
+<!--
+Signal
+Revision 1.0
+
+Written by TheJustDare on August 30th, 2026
+-->
 
 ## Summary
 
 <details>
 <summary><b>Methods</b></summary>
-Methods of a `Signal`.
-<br><br>
 
-* [Connect](#connect): [`Connection`](/content/reference/datatypes/connection.md)
-* [Fire](#fire)
-* [Once](#once): [`Connection`](/content/reference/datatypes/connection.md)
-* [Wait](#wait): `...any`
-
+* [Connect()](#connect): `Connection`
+* [Fire()](#fire): `nil`
+* [Once()](#once): `Connection`
+* [Wait()](#wait): `any`
 </details>
 
-<details>
-<summary><b>Constructors</b></summary>
-Constructors of a `Signal`.
-<br><br>
+## Overview
 
-* [new](#new): `Signal`
-
-</details>
+[Signal](/content/reference/datatypes/signal.md) is a data type that is used in user-defined functions, otherwise known as **listeners**, to trigger when something happens in the game. The [Signal](/content/reference/datatypes/signal.md) might also pass arguments to each listener depending on which event it is.
 
 ## Methods
 
 ### Connect()
 
-> [`Connection`](/content/reference/datatypes/connection.md)
->
-> `signal:Connect(callback: Function)`
->
-> Connects `callback` to the signal and returns a connection.
+Connects the given function and creates a new [Connection](/content/reference/datatypes/connection.md).
 
-#### Parameters
+```lua
+local part = workspace.Part
+part:SetAttribute("Points", 5)
 
-- `callback`: `Function` — called when the signal fires.
+part:GetAttributeChangedSignal("Points"):Connect(function()
+    local newPoints = part:GetAttribute("Points")
 
-<br/>
+    print(newPoints) -- Returns 5
+end)
+```
+
+<br>
 
 ### Fire()
 
-> `signal:Fire(...arguments: any)`
->
-> Synchronously invokes connected callbacks with the supplied arguments.
+Synchronously invokes connected callbacks with the supplied arguments.
 
-#### Parameters
+```lua
+local signal = Signal.new("Example")
+signal:Connect(function(message)
+    print(message)
+end)
+signal:Fire("Hello")
+```
 
-- `...arguments`: `any` — values passed to each connected callback.
-
-<br/>
+<br>
 
 ### Once()
 
-> [`Connection`](/content/reference/datatypes/connection.md)
->
-> `signal:Once(callback: Function)`
->
-> Connects `callback` for the next fire only and returns a connection.
+Connects the given function and creates a new [Connection](/content/reference/datatypes/connection.md). `Once` runs the function only **once**, unlike the other methods.
 
-#### Parameters
+```lua
+local part = workspace.Part
+part.Name = "Block"
 
-- `callback`: `Function` — called the first time the signal fires after connection.
+part:GetPropertyChangedSignal("Name"):Once(function()
+    print("The part's name has been changed!")
+end)
 
-<br/>
+task.wait(1)
+
+part.Name = "Cube"
+```
 
 ### Wait()
 
-> `...any`
->
-> `signal:Wait()`
->
-> Yields the current thread until the signal fires, then returns the arguments
-> supplied to `Fire`.
-
-<br/>
-
-## Constructors
+Yields the current thread until the `Signal` fires. `Wait()` returns arguments passed by the signal.
 
 ### new()
 
-> `Signal`
->
-> `Signal.new(name: String)`
->
-> Creates a standalone signal that can be connected to and fired.
+`Signal.new(name: String)` creates a standalone signal that can be connected to and fired.
 
-#### Parameters
+## Vortex Studio 0.3.3 notes
 
-- `name`: `String` — a caller-supplied signal name.
+`ConnectParallel` is not exposed. `Connect`, `Fire`, `Once`, `Wait`, and
+`Signal.new` are confirmed. The lowercase `connect` and `fire` aliases are also
+exposed.
 
-## Testing Notes
-
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
-
-Connections are represented as tables. Mutating a `Part` does not deliver its
-`Changed`, property-changed, or attribute-changed callbacks. Keyboard input
-does deliver `UserInputService.InputBegan` callbacks.
-
-The lowercase `connect` and `fire` aliases are also exposed, but the reference
-uses the canonical `Connect` and `Fire` names.
+The `Part` attribute/property-change signals used in the examples are
+connectable, but mutating the corresponding attribute or property did not
+deliver callbacks in the current runtime. Standalone signals and keyboard
+`UserInputService.InputBegan` callbacks did deliver.
