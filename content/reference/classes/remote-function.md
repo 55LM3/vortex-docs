@@ -1,6 +1,6 @@
 ---
 title: RemoteFunction
-description: Communication between server and client, with return values;
+description: A function that is invoked and returns values from the server to the client, and vice-versa.
 ---
 
 ## Summary

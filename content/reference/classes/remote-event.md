@@ -1,6 +1,6 @@
 ---
 title: RemoteEvent
-description: Communication between the server and a client
+description: An event that sends information between client and server.
 ---
 
 ## Summary
