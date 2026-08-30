@@ -94,7 +94,7 @@ Services of `game`.
 
 > `Instance`
 >
-> ServerScriptService contains [Scripts](/content/reference/classes/script.md). [ServerScriptService](/content/reference/classes/server-script-service.md)
+> ServerScriptService contains [Scripts](/content/reference/classes/script.md) that run when the server starts. [ServerScriptService](/content/reference/classes/server-script-service.md)
 
 <br/>
 
