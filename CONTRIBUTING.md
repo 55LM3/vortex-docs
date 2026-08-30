@@ -39,16 +39,17 @@ There are two main ways to contribute:
 1. Fork the repo to your account.
 2. Clone your fork:
 
-   git clone https://github.com/<your-username>/vortex-docs.git
-   cd vortex-docs
+   `git clone https://github.com/<your-username>/vortex-docs.git`
 
-3. Create a branch for your work:
+   `cd vortex-docs`
 
-   git checkout -b docs/<short-descriptive-name>
+4. Create a branch for your work:
 
-4. Make your changes and commit them (see commit message guidelines below).
-5. Push your branch to your fork and open a PR against `main` (or the repository default branch).
-6. In the PR description, explain what you changed and why, and link any related issues.
+   `git checkout -b docs/<short-descriptive-name>`
+
+5. Make your changes and commit them (see commit message guidelines below).
+6. Push your branch to your fork and open a PR against `main` (or the repository default branch).
+7. In the PR description, explain what you changed and why, and link any related issues.
 
 For larger changes, open an issue first so we can discuss them.
 
