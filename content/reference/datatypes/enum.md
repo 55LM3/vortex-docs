@@ -1,9 +1,7 @@
 ---
 title: Enum
-description: A type that represents an enum
+description: A data type that represents an enum
 ---
-
-<link rel="stylesheet" href="/styles/test.css">
 
 <!-- 
 Enum
