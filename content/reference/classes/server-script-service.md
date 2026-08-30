@@ -1,6 +1,6 @@
 ---
 title: ServerScriptService
-description: Stub
+description: Stores Server-side Scripts
 ---
 ## Summary
 
