@@ -25,10 +25,9 @@ Properties of a Model, in the order they appear on Vortex Studio.
 <ul>
 
 <details>
-<summary><b>Transform</b></summary>
+<summary><b>Properties</b></summary>
 
 - [Name](#name): `String`
-- [Position](#position): [`Vector3`](/content/reference/datatypes/vector3.md)
 
 </details>
 
@@ -46,13 +45,16 @@ The name of the `model`, and its label in the explorer.
 <br/>
 
 
-### Position
-> [`Vector3`](/content/reference/datatypes/vector3.md) \
-\
-The position of the `model`, in World-space.
-A model's position is automatically set to the mathematical average of all its children's positions. (See [Images](#images))
-
-<br/>
-
 ## Images
 <img src="../../../images/modelCenterExample1.png" alt="Model w/ Move Tool" width="400"/>
+
+## Testing Notes
+
+These observations are from Vortex Studio 0.3.3, the current public build, and
+may differ in later releases.
+
+A detached `Model` exposes the generic instance members and no readable
+`Position`, `PrimaryPart`, or `WorldPivot` property. Setting a temporary
+Part's `Parent` to a detached Model did not establish an observable hierarchy:
+parent equality was `false`, `FindFirstChild` returned `nil`, `GetChildren()`
+returned an empty table, and `WaitForChild` did not return the temporary Part.

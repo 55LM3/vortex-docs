@@ -55,3 +55,7 @@ The observed `Character` was a `Model` named after the player. Its `Humanoid`
 and `HumanoidRootPart` were directly readable and matched
 `character:FindFirstChild("Humanoid")` and
 `character:FindFirstChild("HumanoidRootPart")` respectively.
+
+`Character:GetChildren()` returned three anonymous `Instance` wrappers rather
+than the named direct references. The observed `HumanoidRootPart` exposed a
+`Position`, but its `CFrame` read as `nil`.
