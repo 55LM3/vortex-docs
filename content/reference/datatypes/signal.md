@@ -15,9 +15,9 @@ Written by TheJustDare on August 30th, 2026
 <details>
 <summary><b>Methods</b></summary>
 
-* [Connect()](#connect): [Connection](/content/reference/datatypes/connection.md)
-* [ConnectParallel()](#connectparallel): [Connection](/content/reference/datatypes/connection.md)
-* [Once()](#once): [Connection](/content/reference/datatypes/connection.md)
+* [Connect()](#connect): `Connection`
+* [ConnectParallel()](#connectparallel): `Connection`
+* [Once()](#once): `Connection`
 * [Wait()](#wait): `any`
 </details>
 
