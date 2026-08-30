@@ -67,8 +67,20 @@ GetAttributes returns a dictionary of the attributes in an Instance.
 
 ___________________
 ### GetAttributeChangedSignal
-This event fires whenever a Attribute is changed.
+```
+Instance:GetAttributeChangedSignal(Attribute: string)
+```
 
+#### Parameters
+```
+Attribute: String
+The name of the specified attribute for which the change signal is being returned. 
+```
+#### Returns
+```
+ScriptSignal
+An event that fires when the specified attribute changes.
+```
 ### Creating Attributes
 Stub
 
