@@ -1,15 +1,6 @@
 ---
 title: TweenService
-description: A service available through game:GetService in Script and LocalScript.
+description: Stub
 ---
 
-## Summary
-
-> [!NOTE]
-> `TweenService` is available through `game:GetService("TweenService")` in
-> both `Script` and `LocalScript`.
-
-The broad property, inherited-method, and signal probes found no matching
-members on this service. Service-specific operations remain untested.
-Repeated `game:GetService("TweenService")` lookups compared equal in both
-tested contexts.
+Stub
