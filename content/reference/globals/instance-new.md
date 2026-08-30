@@ -25,19 +25,20 @@ Written by Arbuzyonak on August 30th, 2026
 
 > [`Instance`](/content/reference/classes/instance.md)
 >
-> `Instance.new(className: String)`
+> `Instance.new(className: String, parent: Instance?)`
 >
 > Creates a new `Instance` of the class supplied by `className`.
 
 #### Parameters
 
 - `className`: `String` — the class to create.
+- `parent`: `Instance?` — optional initial parent for the new instance.
 
 <br/>
 
 ## Overview
 
-`Instance.new` creates a new [`Instance`](/content/reference/classes/instance.md) of the class passed as `className`.
+`Instance.new` creates a new [`Instance`](/content/reference/classes/instance.md) of the class passed as `className`. It accepts an optional second `parent` argument.
 
 ```lua
 local part = Instance.new("Part")
@@ -48,7 +49,7 @@ print(part.Name)       --> Part
 
 ## Parenting
 
-A new instance has no parent: it exists in memory, but it is not rendered, replicated, or saved until you assign its [`Parent`](/content/reference/classes/instance.md).
+A new instance begins unparented unless you supply a parent.
 
 Set the parent **last**, after configuring the instance, so scripts listening for new objects receive it fully configured:
 
@@ -60,6 +61,18 @@ part.Position = Vector3.new(0, 10, 0)
 part.Anchored = true
 part.Parent = workspace
 ```
+
+You can instead supply that parent as the second argument:
+
+```lua
+local part = Instance.new("Part", workspace)
+part.Name = "Platform"
+part.Size = Vector3.new(8, 1, 8)
+part.Position = Vector3.new(0, 10, 0)
+part.Anchored = true
+```
+
+> In Vortex Studio 0.3.3, assigning `Parent` or passing this second argument is accepted, but script-created children are not reliably listed by a service's `GetChildren` or `FindFirstChild`. Do not rely on it to add runtime objects to the editor-authored Workspace hierarchy.
 
 ## Default state
 
