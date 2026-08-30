@@ -23,6 +23,8 @@ Properties of a `Vector3`.
 * [X](#x): `Number`
 * [Y](#y): `Number`
 * [Z](#z): `Number`
+* [Magnitude](#magnitude): `Number`
+* [Unit](#unit): `Vector3`
 
 </details>
 
@@ -68,5 +70,54 @@ Constructors of a `Vector3`.
 > `Vector3` 
 >
 > Returns a new `Vector3` from the given components.
+
+<br/>
+
+## Verified runtime compatibility
+
+In both `Script` and `LocalScript`, `Vector3.new` and the properties `X`, `Y`,
+`Z`, `Magnitude`, and `Unit` were available.
+
+`Vector3.FromAxis` and `Vector3.FromNormalId` were not available in the tested
+runtime; the constructor probe found 1 of 3 checked constructors.
+
+### Methods
+
+- `Cross(other: Vector3): Vector3`
+- `Dot(other: Vector3): Number`
+- `Lerp(other: Vector3, alpha: Number): Vector3`
+
+### Operators
+
+The following expressions completed successfully:
+
+```lua
+Vector3.new(1, 2, 3) + Vector3.new(1, 2, 3)
+Vector3.new(1, 2, 3) - Vector3.new(1, 2, 3)
+Vector3.new(1, 2, 3) * 2
+Vector3.new(1, 2, 3) / 2
+```
+
+The tested results were `(5, 7, 9)`, `(3, 3, 3)`, `(2, 4, 6)`, and `(4, 3, 2)`
+respectively.
+
+The probes observed `Vector3.new(1, 0, 0):Cross(Vector3.new(0, 1, 0))`
+returning `(0, 0, 1)`, `Vector3.new(1, 2, 3):Dot(Vector3.new(4, 5, 6))`
+returning `32`, and interpolation from `(0, 0, 0)` to `(8, 4, 2)` at `0.25`
+returning `(2, 1, 0.5)`.
+
+### Magnitude
+
+> `Number`
+>
+> The vector magnitude.
+
+<br/>
+
+### Unit
+
+> `Vector3`
+>
+> The normalized vector.
 
 <br/>

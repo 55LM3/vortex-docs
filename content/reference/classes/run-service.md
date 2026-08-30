@@ -1,15 +1,15 @@
 ---
-title: TweenService
+title: RunService
 description: A service available through game:GetService in Script and LocalScript.
 ---
 
 ## Summary
 
 > [!NOTE]
-> `TweenService` is available through `game:GetService("TweenService")` in
-> both `Script` and `LocalScript`.
+> `RunService` is available through `game:GetService("RunService")` in both
+> `Script` and `LocalScript`.
 
 The broad property, inherited-method, and signal probes found no matching
 members on this service. Service-specific operations remain untested.
-Repeated `game:GetService("TweenService")` lookups compared equal in both
-tested contexts.
+Repeated `game:GetService("RunService")` lookups compared equal in both tested
+contexts.

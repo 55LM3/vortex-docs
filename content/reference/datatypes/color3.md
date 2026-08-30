@@ -34,8 +34,6 @@ Constructors of a `Color3`.
 
 * [new(R: `Number`, G: `Number`, B: `Number`)](#newr-number-g-number-b-number): `Color3`
 * [fromRGB(R: `Number`, G: `Number`, B: `Number`)](#fromrgbr-number-g-number-b-number): `Color3`
-* [fromHSV(H: `Number`, S: `Number`, V: `Number`)](#fromhsvh-number-s-number-v-number): `Color3`
-* [fromHex(hex: `String`)](#fromhexhex-string): `Color3`
 
 </details>
 
@@ -83,18 +81,22 @@ Constructors of a `Color3`.
 
 <br/>
 
-### fromHSV(H: `Number`, S: `Number`, V: `Number`)
+## Verified runtime compatibility
 
-> `Color3`
->
-> Returns a new `Color3` from the given values. Values range from `0` to `1`.
+`Color3.new` and `Color3.fromRGB` were present in both `Script` and
+`LocalScript`. `Color3.fromRGB(64, 128, 255)` returned components
+`(64 / 255, 128 / 255, 1)`.
 
-<br/>
+The constructor probe found 2 of 4 checked constructors: `new` and `fromRGB`.
 
-### fromHex(hex: `String`)
+`Color3.Lerp(other, alpha)` performs component-wise linear interpolation. For
+example, interpolating `(0, 0, 0)` toward `(1, 0.5, 0.25)` with `0.25` returned
+`(0.25, 0.125, 0.0625)`.
 
-> `Color3`
->
-> Returns a new `Color3` from the given hexadecimal color value.
+Adding two `Color3` values fails because Vortex represents them as tables
+without an addition metamethod.
 
-<br/>
+> [!NOTE]
+> Runtime probes in both `Script` and `LocalScript` verified `new` and
+> `fromRGB`. `fromHSV` and `fromHex` were not available in the tested Vortex
+> runtime.

@@ -11,6 +11,12 @@ Written by KingTasaz on August 28th, 2026
 -->
 
 ## Summary
+
+> [!WARNING]
+> `game:GetService("Lighting")` was unavailable in the tested `Script` and
+> `LocalScript` contexts. The API below describes the intended service surface,
+> not an available service in that runtime build.
+
 > [!NOTE]
 > `Lighting` is a service and cannot be `created` or `destroyed`.
 

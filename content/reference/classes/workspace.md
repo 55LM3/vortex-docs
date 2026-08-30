@@ -33,6 +33,25 @@ Properties of a Workspace, in the order they appear on Vortex Studio
 </details>
 
 
-## Properties
+## Verified runtime compatibility
 
-None
+The following surface was verified in both `Script` and `LocalScript`.
+
+### Properties
+
+- `ClassName`: `String`
+- `Name`: `String`
+
+### Methods
+
+- `FindFirstChild` — callable member.
+- `GetChildren` — callable member.
+- `WaitForChild` — callable member.
+
+Other documented `Workspace` methods, including `Raycast`, were not exposed by
+the tested member probe.
+
+> [!WARNING]
+> A temporary Part could be parented to `Workspace`, and `WaitForChild` found
+> it, but `FindFirstChild` returned `nil` and `GetChildren` omitted it in both
+> tested contexts.

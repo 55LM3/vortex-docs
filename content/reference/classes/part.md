@@ -146,3 +146,61 @@ When drawing shadows, all parts are treated as opaque regardless of their `trans
 If a `part` is a truss part, then the `Player` is able to climb the part by walking up to it. It is recommened to keep truss parts anchored, as they otherwise produce unpredictable effects.
 
 <br/>
+
+## Verified runtime compatibility
+
+The following additional members were verified on a newly created `Part` in
+both `Script` and `LocalScript`.
+
+### Properties
+
+- `CFrame`: `CFrame`
+- `ClassName`: `String`
+- `Orientation`: `Vector3`
+- `Parent`: `Instance | nil`
+
+The existing documented properties `Anchored`, `CanCollide`, `CastShadow`,
+`Color`, `Name`, `Position`, `Rotation`, `Size`, and `Transparency` were also
+readable and writable by assigning each property its current value.
+
+`Material` and `Truss` were not readable in the same Part property probe.
+
+> [!WARNING]
+> After `child.Parent = part` succeeds, `child.Parent == part` is `false` in
+> the tested runtime. `WaitForChild(childName)` resolves the child, but
+> `FindFirstChild`, `FindFirstChildOfClass`, `GetChildren`, and
+> `GetDescendants` do not expose it.
+
+### Methods
+
+- `Clone`
+- `Destroy`
+- `FindFirstChild` (a name argument was exercised)
+- `FindFirstChildOfClass`
+- `GetAttribute`
+- `GetAttributeChangedSignal`
+- `GetAttributes`
+- `GetChildren`
+- `GetDescendants`
+- `GetPropertyChangedSignal`
+- `IsA`
+- `SetAttribute`
+- `WaitForChild`
+
+The method probe verifies that these members are callable; except where noted,
+it does not establish their argument or return types.
+
+`Clone()` was exercised by the behavior probe and returned a `Part`.
+
+### Events
+
+- `Changed`, `Touched`, and `TouchEnded` expose `Connect`, which returns a
+  table-like connection value whose `Disconnect` method is callable.
+- A listener attached to `Changed`, `GetPropertyChangedSignal("Anchored")`, or
+  `GetAttributeChangedSignal(name)` did not fire after the corresponding
+  property or attribute mutation. Touch delivery was not forced by the probe.
+
+### Attributes
+
+`SetAttribute(name, value)` persists a numeric value; `GetAttribute(name)` and
+`GetAttributes()[name]` both returned that value in the tested contexts.

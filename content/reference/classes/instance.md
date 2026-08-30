@@ -79,3 +79,22 @@ Methods of a `Instance`.
 > Return children of the `Instance`.
 
 <br/>
+
+## Verified runtime compatibility
+
+The following members were directly verified on a `Part`, which is an
+`Instance`.
+
+### Properties
+
+- `ClassName`: `String`
+- `Name`: `String`
+
+### Methods
+
+- `IsA` — callable; `part:IsA("Instance")` returned successfully.
+- `GetPropertyChangedSignal` — callable member.
+
+### Events
+
+- `Changed` — present and exposes `Connect`.
