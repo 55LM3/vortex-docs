@@ -37,6 +37,10 @@ Services of `game`.
 * [StarterPlayerScripts](/content/reference/classes/starter-player-scripts.md)
 * [ServerScriptService](/content/reference/classes/server-script-service.md)
 * [Lighting](/content/reference/classes/lighting.md)
+* [Debris](/content/reference/classes/debris.md)
+* [RunService](/content/reference/classes/run-service.md)
+* [TweenService](/content/reference/classes/tween-service.md)
+* [UserInputService](/content/reference/classes/user-input-service.md)
 
 </details>
 
@@ -96,5 +100,37 @@ Services of `game`.
 > `Instance`
 >
 > lighting is the game service that controls basic rendering and atmospherics. [Lighting](/content/reference/classes/lighting.md)
+
+<br/>
+
+### Debris
+
+> `Instance`
+>
+> Available through `game:GetService("Debris")` in both `Script` and `LocalScript`. [Debris](/content/reference/classes/debris.md)
+
+<br/>
+
+### RunService
+
+> `Instance`
+>
+> Available through `game:GetService("RunService")` in both `Script` and `LocalScript`. [RunService](/content/reference/classes/run-service.md)
+
+<br/>
+
+### TweenService
+
+> `Instance`
+>
+> Available through `game:GetService("TweenService")` in both `Script` and `LocalScript`. [TweenService](/content/reference/classes/tween-service.md)
+
+<br/>
+
+### UserInputService
+
+> `Instance`
+>
+> Available through `game:GetService("UserInputService")` in `LocalScript`. It was not available in the tested `Script` context. In the tested client runtime, repeated lookups did not compare equal. [UserInputService](/content/reference/classes/user-input-service.md)
 
 <br/>
