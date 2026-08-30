@@ -1,8 +1,38 @@
 ---
 title: Workspace
-description: The Workspace is the root object that holds anything that is currently in the world
+description: Service that holds every visible (or invisible) player-interactible instance.
 ---
 
-Any part not in the workspace will not get displayed and will not be be simulated by physics, the workspace can also be used to create raycasts with scripting
+<!-- 
+Workspace
 
-Stub
+Written by Prouddani on August 29th, 2026
+-->
+
+## Summary
+
+Service that holds every player-interactible instance. Consequently, making them the only service as of now whose children can be viewed by the player.
+<br>
+Additionally, can be used to raycast.
+
+<details>
+<summary><b>Properties</b></summary>
+Properties of a Workspace, in the order they appear on Vortex Studio
+<br><br>
+<ul>
+<details>
+<summary><b>Appearance</b></summary>
+</details>
+
+<details>
+<summary><b>Transform</b></summary>
+
+</details>
+
+</ul>
+</details>
+
+
+## Properties
+
+None
