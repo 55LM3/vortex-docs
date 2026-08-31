@@ -51,16 +51,16 @@ Callbacks of `game`.
 Services of `game`.
 <br><br>
 
-* [Workspace](/content/reference/classes/workspace.md)
-* [Players](/content/reference/classes/players.md)
-* [ReplicatedStorage](/content/reference/classes/replicated-storage.md)
-* [StarterPlayerScripts](/content/reference/classes/starter-player-scripts.md)
-* [ServerScriptService](/content/reference/classes/server-script-service.md)
-* [Lighting](/content/reference/classes/lighting.md)
-* [Debris](/content/reference/classes/debris.md)
-* [RunService](/content/reference/classes/run-service.md)
-* [TweenService](/content/reference/classes/tween-service.md)
-* [UserInputService](/content/reference/globals/user-input-service.md)
+* [Workspace](../classes/workspace.md)
+* [Players](../classes/players.md)
+* [ReplicatedStorage](../classes/replicated-storage.md)
+* [StarterPlayerScripts](../classes/starter-player-scripts.md)
+* [ServerScriptService](../classes/server-script-service.md)
+* [Lighting](../classes/lighting.md)
+* [Debris](../classes/debris.md)
+* [RunService](./runservice.md)
+* [TweenService](../classes/tween-service.md)
+* [UserInputService](./user-input-service.md)
 
 </details>
 
@@ -114,7 +114,8 @@ Services of `game`.
 ### Workspace
 
 > `Instance`
-> The Workspace is the root object that holds anything that is currently in the world. [Workspace](/content/reference/classes/workspace.md)
+>
+> The Workspace is the root object that holds anything that is currently in the world. [Workspace](../classes/workspace.md)
 
 <br/>
 
@@ -122,8 +123,7 @@ Services of `game`.
 
 > `Instance`
 >
-> The service that contains the currently connected player objects.
-> [Players](/content/reference/classes/players.md)
+> The service that contains the currently connected player objects. [Players](../classes/players.md)
 
 <br/>
 
@@ -131,8 +131,7 @@ Services of `game`.
 
 > `Instance`
 >
-> A container for instances loaded by both the server and the client.
-> [ReplicatedStorage](/content/reference/classes/replicated-storage.md)
+> A container for instances loaded by both the server and the client. [ReplicatedStorage](../classes/replicated-storage.md)
 
 <br/>
 
@@ -140,7 +139,7 @@ Services of `game`.
 
 > `Instance`
 >
-> Stub. [StarterPlayerScripts](/content/reference/classes/starter-player-scripts.md)
+> Stub. [StarterPlayerScripts](../classes/starter-player-scripts.md)
 
 <br/>
 
@@ -148,7 +147,7 @@ Services of `game`.
 
 > `Instance`
 >
-> ServerScriptService contains [Scripts](/content/reference/classes/script.md) that run when the server starts. [ServerScriptService](/content/reference/classes/server-script-service.md)
+> ServerScriptService contains [Scripts](../classes/script.md) that run when the server starts. [ServerScriptService](../classes/server-script-service.md)
 
 <br/>
 
@@ -156,7 +155,7 @@ Services of `game`.
 
 > `Instance`
 >
-> Lighting is the game service that controls basic rendering and atmospherics. [Lighting](/content/reference/classes/lighting.md)
+> Lighting is the game service that controls basic rendering and atmospherics. [Lighting](../classes/lighting.md)
 
 <br/>
 

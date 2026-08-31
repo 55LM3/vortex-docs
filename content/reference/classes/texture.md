@@ -11,9 +11,11 @@ Written by KingTasaz on August 28th, 2026
 -->
 
 ## Summary
-
 This page describes the editor-facing Texture concept. Texture scripting is not
-currently available in the Vortex runtime; see the testing notes below.
+currently available in the Vortex runtime; see the testing notes below. When a
+texture is added to an editor-authored [`part`](./part.md), its `Face` and name
+are set automatically, so six textures can cover the entire part quickly.
+<br><br>
 
 <details>
 <summary><b>Properties</b></summary>
@@ -23,8 +25,8 @@ Properties of a Texture, in the order they appear on Vortex Studio.
 <details>
 <summary><b>Texture</b></summary>
 
-- [Face](#face): [`Enum.Face`](/content/reference/datatypes/enumitem.md)
-- [Texture](#texture): [`Enum.Texture`](/content/reference/datatypes/enumitem.md)
+- [Face](#face): [`Enum.Face`](../datatypes/enumitem.md)
+- [Texture](#texture): [`Enum.Texture`](../datatypes/enumitem.md)
 
 </details>
 
@@ -35,14 +37,14 @@ Properties of a Texture, in the order they appear on Vortex Studio.
 ## Properties
 
 ### Face
-> [`Enum.Face`](/content/reference/datatypes/enumitem.md) \
+> [`Enum.Face`](../datatypes/enumitem.md) \
 \
-Controls which face of the parent [`part`](/content/reference/classes/part.md) that the texture is displayed on.
+Controls which face of the parent [`part`](./part.md) that the texture is displayed on.
 
 <br/>
 
 ### Texture
-> [`Enum.Texture`](/content/reference/datatypes/enumitem.md) \
+> [`Enum.Texture`](../datatypes/enumitem.md) \
 \
 Sets which texture to render onto the selected face.
 Currently the only options are `Inlets` or `Studs`. 

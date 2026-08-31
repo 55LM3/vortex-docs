@@ -38,7 +38,8 @@ Written by Arbuzyonak on August 30th, 2026
 
 ## Overview
 
-`Instance.new` creates a new [`Instance`](/content/reference/classes/instance.md) of the class passed as `className`. It accepts an optional second `parent` argument.
+`Instance.new` creates a new [`Instance`](../classes/instance.md) of the class
+passed as `className`. It accepts an optional second `parent` argument.
 
 ```lua
 local part = Instance.new("Part")
@@ -49,7 +50,8 @@ print(part.Name)       --> Part
 
 ## Parenting
 
-A new instance begins unparented unless you supply a parent.
+A new instance begins unparented unless you supply a parent. Configure it
+before assigning its [`Parent`](../classes/instance.md).
 
 Set the parent **last**, after configuring the instance, so scripts listening for new objects receive it fully configured:
 
@@ -89,6 +91,6 @@ releases.
 
 - `Instance.fromExisting` is not exposed (`nil`) in either Script or
   LocalScript in 0.3.4.
-- Common creatable classes include [`Part`](/content/reference/classes/part.md), [`Model`](/content/reference/classes/model.md), [`Folder`](/content/reference/classes/folder.md), [`SpawnLocation`](/content/reference/classes/spawnlocation.md), [`Script`](/content/reference/classes/script.md), [`LocalScript`](/content/reference/classes/localscript.md), [`ModuleScript`](/content/reference/classes/modulescript.md), [`IntValue`](/content/reference/classes/int-value.md), [`StringValue`](/content/reference/classes/string-value.md), [`BindableEvent`](/content/reference/classes/bindable-event.md), [`RemoteEvent`](/content/reference/classes/remote-event.md), [`RemoteFunction`](/content/reference/classes/remote-function.md), [`PointLight`](/content/reference/classes/point-light.md), and [`SpotLight`](/content/reference/classes/spot-light.md).
+- Common creatable classes include [`Part`](../classes/part.md), [`Model`](../classes/model.md), [`Folder`](../classes/folder.md), [`SpawnLocation`](../classes/spawnlocation.md), [`Script`](../classes/script.md), [`LocalScript`](../classes/localscript.md), [`ModuleScript`](../classes/modulescript.md), [`IntValue`](../classes/int-value.md), [`StringValue`](../classes/string-value.md), [`BindableEvent`](../classes/bindable-event.md), [`RemoteEvent`](../classes/remote-event.md), [`RemoteFunction`](../classes/remote-function.md), [`PointLight`](../classes/point-light.md), and [`SpotLight`](../classes/spot-light.md).
 
 <br/>
