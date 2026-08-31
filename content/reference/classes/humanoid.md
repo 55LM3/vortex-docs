@@ -7,6 +7,8 @@ The current player's humanoid is available as
 `game:GetService("Players").LocalPlayer.Character.Humanoid` in a `LocalScript`.
 In Vortex Studio 0.3.4, a server `Script` can also reach a visible player's
 character through `game:GetService("Players"):GetPlayers()[1].Character`.
+The character's root transform is exposed separately as a
+[`HumanoidRootPart`](./humanoid-root-part.md).
 
 ## Summary
 

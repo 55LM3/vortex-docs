@@ -376,7 +376,8 @@ not deliver callbacks. `Touched` and `TouchEnded` are connectable; their event
 delivery has not been established.
 
 > [!NOTE]
-> A server Script can read a player's `Character.HumanoidRootPart`, but assigning
-> its current `Position` or `Size` is rejected as client-side, server-authoritative
+> A server Script can read a player's
+> [`Character.HumanoidRootPart`](./humanoid-root-part.md), but assigning its
+> current `Position` or `Size` is rejected as client-side, server-authoritative
 > character state. This restriction applies to the live character root part; it
 > does not change the tested behavior of ordinary script-created Parts.
