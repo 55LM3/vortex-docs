@@ -1,3 +1,8 @@
+---
+title: Remote Functions
+description: Two-way communication between the server and clients, with a return value.
+---
+
 # Remote Functions
 A `RemoteFunction` calls between the server and clients and waits for a response. Unlike a `RemoteEvent`, it yields the calling script until the other side returns a value. For firing one-way communication signals that don't need a response, use [RemoteEvent](/guides/remote-events/) instead.
 
