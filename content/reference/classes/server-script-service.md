@@ -3,6 +3,8 @@ title: ServerScriptService
 description: The service surface for editor-authored server Scripts.
 ---
 
+## Summary
+
 ## Runtime support
 
 `game:GetService("ServerScriptService")` is available in both Script and
