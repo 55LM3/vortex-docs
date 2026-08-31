@@ -23,14 +23,14 @@ Written by TheJustDare on August 30th, 2026
 
 ## Overview
 
-[Signal](/content/reference/datatypes/signal.md) is a data type that is used in user-defined functions, otherwise known as **listeners**, to trigger when something happens in the game. \
- The [Signal](/content/reference/datatypes/signal.md) might also happen to pass arguments to each listener depending on which event it is.
+[Signal](./signal.md) is a data type that is used in user-defined functions, otherwise known as **listeners**, to trigger when something happens in the game. \
+ The [Signal](./signal.md) might also happen to pass arguments to each listener depending on which event it is.
 
  ## Methods
 
  ### Connect()
 
- Connects the given function and creates a new [Connection](/content/reference/datatypes/connection.md).
+ Connects the given function and creates a new [Connection](./connection.md).
 
  ```lua
 local part = workspace.Part
@@ -53,7 +53,7 @@ Unlike [Connect](#connect), `ConnectParallel` runs the connected function on a d
 
 ### Once()
 
-Connects the given function and creates a new [Connection](/content/reference/datatypes/connection.md). \
+Connects the given function and creates a new [Connection](./connection.md). \
 `Once` will run the function only **once**, unlike the other methods.
 
 ```lua

@@ -20,9 +20,9 @@ Properties of a Part, in the order they appear on Vortex Studio.
 <details>
 <summary><b>Appearance</b></summary>
 
-- [Color](#color): [`Color3`](/content/reference/datatypes/color3.md)
+- [Color](#color): [`Color3`](../datatypes/color3.md)
 - [Transparency](#transparency): `Float`
-- [Material](#material): [`Enum.Material`](/content/reference/datatypes/enumitem.md) <!-- not sure if this should link to enumitem.md or enum.md -->
+- [Material](#material): [`Enum.Material`](../datatypes/enumitem.md) <!-- not sure if this should link to enumitem.md or enum.md -->
 - [Cast Shadow](#cast-shadow): `Boolean`
 
 </details>
@@ -40,9 +40,9 @@ Properties of a Part, in the order they appear on Vortex Studio.
 <summary><b>Transform</b></summary>
 
 - [Name](#name): `String`
-- [Position](#position): [`Vector3`](/content/reference/datatypes/vector3.md)
-- [Rotation](#rotation): [`Vector3`](/content/reference/datatypes/vector3.md)
-- [Size](#size): [`Vector3`](/content/reference/datatypes/vector3.md)
+- [Position](#position): [`Vector3`](../datatypes/vector3.md)
+- [Rotation](#rotation): [`Vector3`](../datatypes/vector3.md)
+- [Size](#size): [`Vector3`](../datatypes/vector3.md)
 
 </details>
 
@@ -103,7 +103,7 @@ This can be used to save performance with part's whose shadows cannot be seen, o
 
 
 ### Color
-> [`Color3`](/content/reference/datatypes/color3.md) \
+> [`Color3`](../datatypes/color3.md) \
 \
 Determines the visible color of the `part`.
 Will also affect the part's [`Material`]() color.
@@ -112,7 +112,7 @@ Will also affect the part's [`Material`]() color.
 
 
 ### Material
-> [`Enum.Material`](/content/reference/datatypes/enumitem.md) \
+> [`Enum.Material`](../datatypes/enumitem.md) \
 \
 Determines which `Material` type to apply when rendering the `part`.
 Currently this has no effect other than visual.
@@ -129,7 +129,7 @@ The name of the `part`, and its label in the explorer.
 
 
 ### Position
-> [`Vector3`](/content/reference/datatypes/vector3.md) \
+> [`Vector3`](../datatypes/vector3.md) \
 \
 The position of the `part`, in World-space.
 
@@ -137,7 +137,7 @@ The position of the `part`, in World-space.
 
 
 ### Rotation
-> [`Vector3`](/content/reference/datatypes/vector3.md) \
+> [`Vector3`](../datatypes/vector3.md) \
 \
 The rotation of the `part` along each axis.
 
@@ -145,7 +145,7 @@ The rotation of the `part` along each axis.
 
 
 ### Size
-> [`Vector3`](/content/reference/datatypes/vector3.md) \
+> [`Vector3`](../datatypes/vector3.md) \
 \
 The size of the `part` in each dimension (width, height, depth).
 
