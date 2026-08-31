@@ -1,19 +1,16 @@
 ---
 title: Workspace
-description: Service that holds every visible (or invisible) player-interactible instance.
+description: Service that holds and renders every 3D player-interactable instance.
 ---
 
 <!-- 
-Workspace
+Instance
+Revision 1.1
 
-Written by Prouddani on August 29th, 2026
+Written by TheJustDare on August 31th, 2026
 -->
 
 ## Summary
-
-Service that holds every player-interactible instance. Consequently, making them the only service as of now whose children can be viewed by the player.
-<br>
-Additionally, can be used to raycast.
 
 <details>
 <summary><b>Properties</b></summary>
