@@ -8,7 +8,7 @@ Note: Variant = Any type.
 ### Methods
 ___________________
 ### SetAttribute
-Sets a pre-existing attributes value to a new value.
+Creates, updates, or removes an attribute value.
 ```
 Instance:SetAttribute(Attribute: String, Value: Variant)
 ```
@@ -82,7 +82,20 @@ ScriptSignal
 An event that fires when the specified attribute changes.
 ```
 ### Creating Attributes
-Stub
+
+Call `SetAttribute` with a new name to create an attribute. Set the same name
+again to update it, or pass `nil` to remove it.
+
+```luau
+local part = workspace:WaitForChild("Part")
+
+part:SetAttribute("Id", 1)       -- create
+part:SetAttribute("Id", 2)       -- update
+part:SetAttribute("Id", nil)     -- remove
+```
+
+Use `GetAttributes()` when several current values are needed; it returns a
+table keyed by attribute name.
 
 ## Vortex Studio 0.3.4 notes
 
@@ -93,6 +106,10 @@ returns a table containing the current values.
 `GetAttributeChangedSignal` returns a connectable signal, but setting or
 removing a Part attribute did not deliver the callback in the tested runtime.
 Do not rely on that signal for game logic until delivery is established.
+
+`Player` instances are not attribute-capable in 0.3.4: `GetAttribute`,
+`GetAttributes`, `SetAttribute`, and `GetAttributeChangedSignal` all read as
+`nil` in both client and server contexts.
 
 The current player's `Character` Model is an important exception to the
 client/server boundary: a confirmed server Script set a temporary Character
