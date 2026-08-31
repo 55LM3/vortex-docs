@@ -26,7 +26,7 @@ Properties of `Workspace`
 <details>
 <summary><b>Methods</b></summary>
 
-Methods of `Workspace`.
+Methods of `Workspace`
 <br>
 
 * [FindFirstChild()](#findFirstChild): `Instance?`
