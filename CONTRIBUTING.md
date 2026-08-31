@@ -91,5 +91,6 @@ Before requesting review, ensure:
 - Any necessary screenshots or examples are included.
 - If the change affects a live site, the preview/build has been tested locally.
 - Ensure all paths are relative.
+- The PR relatively small and focused. (If change is large, consider splitting it into multiple PRs)
 ------------------------------------------------------------
 Thanks for taking the time to contribute to Vortex Docs!
