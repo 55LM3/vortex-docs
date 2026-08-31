@@ -1,3 +1,8 @@
+---
+title: Remote Events
+description: One way communication between the server and clients.
+---
+
 # Remote Events
 A `RemoteEvent` fires one-way events between the server and clients. It doesn't wait for a response and has no return value. It's built for telling the other side what happened, not asking the other side for a result. For a call that needs a response, use [RemoteFunction](/guides/remote-functions/) instead.
 
