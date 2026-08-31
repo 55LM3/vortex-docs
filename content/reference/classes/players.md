@@ -31,8 +31,13 @@ local player = Players.LocalPlayer
 
 `GetChildren` is not exposed by the current Vortex Players service.
 
-## Vortex Studio 0.3.3 notes
+## Vortex Studio 0.3.4 notes
 
-In a `LocalScript`, `GetPlayers()` returned the current player. In a server
-`Script`, it remained an empty table across repeated polls, and no public
-lookup route resolved the numeric sender ID received by a `RemoteEvent`.
+`GetPlayers()` returns the current player in a `LocalScript`. In a confirmed
+server `Script`, it also returned a list containing the live `Player` object;
+that object's `Character` is readable. `LocalPlayer` remains `nil` on the
+server.
+
+The numeric connection id passed as the first `OnServerEvent` argument still
+has no known public mapping back to a particular Player. Numeric/string service
+indexing and the tested player lookup methods do not provide that mapping.

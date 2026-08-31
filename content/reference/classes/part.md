@@ -361,8 +361,8 @@ An event associated with the end of physical contact with the `part`.
 
 ## Testing Notes
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
+These observations are from Vortex Studio 0.3.4 and may differ in later
+releases.
 
 > [!WARNING]
 > After `child.Parent = part` succeeds, `child.Parent == part` is `false`.
@@ -374,3 +374,9 @@ may differ in later releases.
 connectable events, but changing the corresponding property or attribute does
 not deliver callbacks. `Touched` and `TouchEnded` are connectable; their event
 delivery has not been established.
+
+> [!NOTE]
+> A server Script can read a player's `Character.HumanoidRootPart`, but assigning
+> its current `Position` or `Size` is rejected as client-side, server-authoritative
+> character state. This restriction applies to the live character root part; it
+> does not change the tested behavior of ordinary script-created Parts.

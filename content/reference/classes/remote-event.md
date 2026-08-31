@@ -20,9 +20,10 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 local MyRemote = ReplicatedStorage:WaitForChild("MyRemote") -- WaitForChild is important.
 
--- The methods are exposed, but Vortex cannot currently obtain a server Player
--- to target, so this Roblox-style targeting block remains illustrative only:
--- local random_player = Players:GetChildren()[math.random(1, #Players:GetChildren())]
+-- The server can enumerate Players in 0.3.4, but FireClient delivery is still
+-- unconfirmed, so this Roblox-style targeting block remains illustrative:
+-- local activePlayers = Players:GetPlayers()
+-- local random_player = activePlayers[math.random(1, #activePlayers)]
 -- MyRemote:FireClient(random_player, "Message coming from the server!")
 -- MyRemote:FireAllClients("Minions, tonight, we'll steal the moon!!!")
 
@@ -63,7 +64,7 @@ MyRemote.OnClientEvent:Connect(received_msg)
 - `OnServerEvent(senderId: Number, arguments: Tuple) : Signal` - Fired when
   the server receives data from the client.
 
-## Vortex Studio 0.3.3 notes
+## Vortex Studio 0.3.4 notes
 
 - `FireServer` to `OnServerEvent` was confirmed for an editor-authored remote
   in `ReplicatedStorage`.
@@ -71,8 +72,8 @@ MyRemote.OnClientEvent:Connect(received_msg)
   client but did not dispatch to the server handler.
 - `FireClient`, `FireAllClients`, and `OnClientEvent` are exposed, but their
   delivery has not yet been established.
-- The server `Players` service cannot resolve `senderId` to a Player,
-  Character, or Humanoid, so Roblox-style server player-targeting examples do
-  not currently apply.
+- The server can enumerate Player objects through `Players:GetPlayers()`, but
+  cannot map `senderId` to a specific Player, Character, or Humanoid. Normal
+  Roblox-style targeting of the caller therefore does not currently apply.
 - Instances, including `LocalPlayer` and the character, cannot be sent as
   remote arguments.

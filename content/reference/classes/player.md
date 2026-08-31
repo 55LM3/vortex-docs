@@ -30,10 +30,18 @@ print("Hello, " .. player.Name .. "!")
 
 ## Methods
 
-`GetChildren` is not exposed on the current Vortex `Player` projection.
+`GetChildren` is not exposed on the current Vortex `Player` projection. It also
+does not expose the Instance attribute methods `GetAttribute`, `GetAttributes`,
+`SetAttribute`, or `GetAttributeChangedSignal`.
 
-## Vortex Studio 0.3.3 notes
+## Vortex Studio 0.3.4 notes
 
 `Players.LocalPlayer` is available in a `LocalScript` and `nil` in a normal
 server `Script`. The observed `Character` is a `Model` named after the player;
-its `Humanoid` and `HumanoidRootPart` are directly readable.
+its `Humanoid` and `HumanoidRootPart` are directly readable. A server Script
+can now obtain this Player through `Players:GetPlayers()`, but it cannot yet
+derive the Player from a RemoteEvent's numeric sender id.
+
+The client `LocalPlayer` and the server-visible Player both lack the Instance
+attribute method surface. Player attributes therefore cannot be used as a
+server-to-client metadata channel in the tested runtime.

@@ -84,3 +84,25 @@ An event that fires when the specified attribute changes.
 ### Creating Attributes
 Stub
 
+## Vortex Studio 0.3.4 notes
+
+`SetAttribute`, `GetAttribute`, `GetAttributes`, and removal through
+`SetAttribute(name, nil)` are confirmed on `Part` instances. `GetAttributes`
+returns a table containing the current values.
+
+`GetAttributeChangedSignal` returns a connectable signal, but setting or
+removing a Part attribute did not deliver the callback in the tested runtime.
+Do not rely on that signal for game logic until delivery is established.
+
+The current player's `Character` Model is an important exception to the
+client/server boundary: a confirmed server Script set a temporary Character
+attribute to `42`, then `25`; a LocalScript observed both values by polling
+`LocalPlayer.Character:GetAttribute`. Server-to-client Character attribute
+replication is therefore confirmed. Use polling rather than
+`GetAttributeChangedSignal`, whose callback delivery remains unconfirmed.
+
+Client-to-server Character attribute replication is also confirmed for value
+changes: a LocalScript set `42`, then `25`, and a server Script observed both
+transitions through `Players:GetPlayers()[1].Character:GetAttribute`. Do not
+treat these attributes as trusted client input; a client can write values that
+the server sees.

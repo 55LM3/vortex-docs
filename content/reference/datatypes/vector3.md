@@ -167,9 +167,10 @@ Methods of a `Vector3`.
 
 ## Verified runtime compatibility
 
-In Vortex Studio 0.3.3, the current public build, `Vector3.new` and the
-properties `X`, `Y`, `Z`, `Magnitude`, and `Unit` were available in both
-`Script` and `LocalScript`.
+In Vortex Studio 0.3.4, `Vector3.new`, unary negation, and the constants
+`zero`, `one`, `xAxis`, `yAxis`, and `zAxis` were confirmed in both `Script`
+and `LocalScript`. `Vector3.new(3, 4, 12)` has magnitude `13` and unit vector
+approximately `(0.230769, 0.307692, 0.923077)` in both contexts.
 
 ## Methods
 
@@ -238,7 +239,6 @@ returning `(2, 1, 0.5)`.
 
 ## Testing Notes
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
-
-`Vector3.FromAxis` and `Vector3.FromNormalId` are not exposed.
+The detailed Vector3 behavior above was revalidated in Vortex Studio 0.3.4 in
+both Script and LocalScript. `Vector3.FromAxis` and `Vector3.FromNormalId`
+remain unavailable (`nil`).

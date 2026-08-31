@@ -50,11 +50,20 @@ The name of the `model`, and its label in the explorer.
 
 ## Testing Notes
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
+In Vortex Studio 0.3.4, a detached `Model` exposes the generic instance
+surface, including hierarchy and attribute methods, but has no readable
+`Position`, `PrimaryPart`, or `WorldPivot` property. This is identical in
+both Script and LocalScript.
 
-A detached `Model` exposes the generic instance members and no readable
-`Position`, `PrimaryPart`, or `WorldPivot` property. Setting a temporary
-Part's `Parent` to a detached Model did not establish an observable hierarchy:
-parent equality was `false`, `FindFirstChild` returned `nil`, `GetChildren()`
-returned an empty table, and `WaitForChild` did not return the temporary Part.
+Setting a temporary Part's `Parent` to a detached Model does not establish an
+observable hierarchy: parent equality is `false`, `FindFirstChild` returns
+`nil`, `GetChildren()` returns an empty table, and `WaitForChild` does not
+return the temporary Part.
+
+`GetPivot`, `PivotTo`, `GetPrimaryPartCFrame`, and `SetPrimaryPartCFrame` are
+also unavailable (`nil`) in both contexts. Assigning `Model.PrimaryPart` is
+rejected as a non-settable property.
+
+In 0.3.4, the live Character Model is a special case: it supports attributes,
+and Character attribute values replicate in both directions between a server
+Script and the owning LocalScript. See the [Attributes guide](/content/guides/attributes.md).

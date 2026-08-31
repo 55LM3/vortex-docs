@@ -93,9 +93,15 @@ Waits for and returns a direct child with the supplied `name`.
 
 ## Testing Notes
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
+The hierarchy observations below were revalidated in Vortex Studio 0.3.4 and
 may differ in later releases.
 
-`Raycast` was not exposed. A temporary `Part` can be parented to `Workspace`,
+`Raycast` is not exposed in either Script or LocalScript in Vortex Studio
+0.3.4. A temporary `Part` can be parented to `Workspace`,
 and `WaitForChild` resolves it. `FindFirstChild` returns `nil` and
 `GetChildren` omits it.
+
+For existing authored children, repeated `GetChildren()` calls can return fresh
+Lua wrapper tables for the same underlying Instance. Do not use a returned
+wrapper as a persistent table key across frames; use a unique authored name or
+another stable identifier instead.

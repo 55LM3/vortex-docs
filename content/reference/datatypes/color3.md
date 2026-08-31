@@ -110,6 +110,5 @@ Methods of a `Color3`.
 ## Testing Notes
 
 The previously listed `Color3.fromHSV` and `Color3.fromHex` constructors were
-removed from this reference because they were not exposed in Vortex Studio
-0.3.3, the current public build. Runtime availability may change in later
-releases.
+removed from this reference because they are not exposed in Vortex Studio
+0.3.4. Runtime availability may change in later releases.

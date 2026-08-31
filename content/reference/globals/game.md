@@ -78,7 +78,7 @@ Services of `game`.
 
 > [`Players`](/content/reference/classes/players.md)
 >
-> A direct alias for the Players service. In Vortex Studio 0.3.3 it is a
+> A direct alias for the Players service. In Vortex Studio 0.3.4 it is a
 > distinct proxy table from `game:GetService("Players")`.
 
 <br/>
@@ -162,8 +162,8 @@ Services of `game`.
 
 ## Testing Notes
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
+These observations are from Vortex Studio 0.3.4 and may differ in later
+releases.
 
 `game.Workspace` and `game:GetService("Workspace")` both report `ClassName`
 and `Name` as `Workspace`. `game.OnClose` starts as `nil`; assigning a

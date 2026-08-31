@@ -48,8 +48,13 @@ Methods of a `Connection`.
 
 ## Testing Notes
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
+These observations are from Vortex Studio 0.3.4 and may differ in later
+releases.
 
 Connections are represented as tables. The lowercase `disconnect` alias is
 also exposed; this reference uses the canonical `Disconnect` name.
+
+In both Script and LocalScript, `Connected` began as `true`, a manually fired
+signal delivered its callback once, and `Disconnect()` changed `Connected` to
+`false` and prevented later delivery. The lowercase `disconnect()` alias has
+the same effect.

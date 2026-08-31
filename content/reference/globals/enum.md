@@ -5,8 +5,10 @@ description: The runtime enum namespace.
 
 ## Summary
 
-The following enum groups and members are exposed by Vortex Studio 0.3.3, the
-current public build.
+The enum namespace and the complete member inventory below were revalidated in
+Vortex Studio 0.3.4 in both Script and LocalScript. All 119 listed items were
+available, stable across repeated reads, and converted to their documented
+`Enum.<group>.<item>` string form.
 
 ### EasingDirection
 

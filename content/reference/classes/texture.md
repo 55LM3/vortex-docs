@@ -11,8 +11,9 @@ Written by KingTasaz on August 28th, 2026
 -->
 
 ## Summary
-When a texture is added to a [`part`](/content/reference/classes/part.md), its `Face` and `name` get set automatically, so adding 6 textures to cover an entire part is very quick.
-<br><br>
+
+This page describes the editor-facing Texture concept. Texture scripting is not
+currently available in the Vortex runtime; see the testing notes below.
 
 <details>
 <summary><b>Properties</b></summary>
@@ -47,3 +48,13 @@ Sets which texture to render onto the selected face.
 Currently the only options are `Inlets` or `Studs`. 
 
 <br/>
+
+## Testing Notes
+
+In Vortex Studio 0.3.4, `Instance.new("Texture")`,
+`Instance.new("Decal")`, and `Instance.new("SurfaceAppearance")` all fail in
+both Script and LocalScript. A script-created `Part` also has no readable
+`Texture`, `TextureID`, `SurfaceAppearance`, or `Decal` field.
+
+Editor-authored texture behavior was not established by this probe, but there
+is currently no confirmed script API for creating or changing textures.

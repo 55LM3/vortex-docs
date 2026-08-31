@@ -34,8 +34,8 @@ Methods of `TweenService`.
 
 ## Testing Notes
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
+`TweenService.Create` and its returned Tween surface were revalidated in
+Vortex Studio 0.3.4.
 
 `Create` returned a Tween in both `Script` and `LocalScript` when given an
 unparented `Part`, `TweenInfo.new(0.1)`, and `{ Transparency = 0.5 }`.

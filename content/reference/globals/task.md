@@ -79,15 +79,15 @@ elapsed time.
 ## Verified runtime compatibility
 
 `task.defer`, `task.delay`, `task.spawn`, and `task.wait` were present in both
-`Script` and `LocalScript` in Vortex Studio 0.3.3, the current public build.
+`Script` and `LocalScript` in Vortex Studio 0.3.4.
 
 The initial capability probe verifies function presence; the dedicated behavior
 probe records the scheduling details below.
 
 ## Testing Notes
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
+These observations are from Vortex Studio 0.3.4 and may differ in later
+releases.
 
 `task.cancel`, `task.desynchronize`, and `task.synchronize` are not exposed.
 `task.spawn` completes during the scheduling call itself. `task.defer` and

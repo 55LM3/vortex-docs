@@ -18,7 +18,8 @@ local Players = game:GetService("Players")
 local GetPiFromDigits = ReplicatedStorage:WaitForChild("GetPiFromDigits")
 
 -- Roblox-style targeting example; see the Vortex notes below.
-local random_player = Players:GetChildren()[math.random(1, #Players:GetChildren())]
+local activePlayers = Players:GetPlayers()
+local random_player = activePlayers[math.random(1, #activePlayers)]
 local pi = GetPiFromDigits:InvokeClient(random_player, 5)
 
 print(random_player.Name .. " replied with: " .. pi)
@@ -76,7 +77,7 @@ GetPiFromDigits.OnClientInvoke = compute_pi
 - `OnServerInvoke(senderId: Number, arguments: Tuple) : Tuple` - Writable
   callback invoked from the client to the server.
 
-## Vortex Studio 0.3.3 notes
+## Vortex Studio 0.3.4 notes
 
 `InvokeServer` is exposed on the client and assigning `OnServerInvoke` succeeds
 in a Script for an editor-authored remote in `ReplicatedStorage`. However,
@@ -84,6 +85,7 @@ in a Script for an editor-authored remote in `ReplicatedStorage`. However,
 currently be sent through remotes. A successful primitive request/response
 round trip has not yet been established.
 
-The server-side `Players:GetChildren()` route in the example is unavailable in
-Vortex 0.3.3, so `InvokeClient` cannot currently be targeted through the public
-Player API. `OnClientInvoke` and `InvokeClient` delivery are likewise untested.
+The server-side `Players:GetChildren()` route remains unavailable. In 0.3.4,
+`Players:GetPlayers()` does return visible Player objects in a server Script,
+so it provides the Player target shown above in principle. `OnClientInvoke` and
+`InvokeClient` delivery are still untested.

@@ -466,8 +466,8 @@ CFrames or transforms a `Vector3` point.
 
 ## Testing Notes
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
+These observations were revalidated in both Script and LocalScript in Vortex
+Studio 0.3.4.
 
 `CFrame.fromMatrix` requires all three basis vectors. Calling it without `vZ`
 fails because the current implementation indexes the missing argument.

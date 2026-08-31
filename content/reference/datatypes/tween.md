@@ -86,8 +86,7 @@ Signals of a `Tween`.
 
 ## Testing Notes
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
+These observations are from Vortex Studio 0.3.4.
 
 `Play`, `Pause`, `Cancel`, `Completed`, and `PlaybackState` are exposed in both
 `Script` and `LocalScript`.

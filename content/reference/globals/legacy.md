@@ -5,10 +5,9 @@ description: Standard-library functions verified in Vortex.
 
 ## Verified runtime compatibility
 
-The following standard-library functions were present in both `Script` and
-`LocalScript` in Vortex Studio 0.3.3, the current public build. They were
-subsequently called by the deterministic behavior probe in both contexts; every
-call listed below succeeded with the same result.
+The following standard-library functions were called by the deterministic
+behavior probe in both `Script` and `LocalScript` in Vortex Studio 0.3.4.
+Every call listed below succeeded with the documented result.
 
 ### coroutine
 
@@ -98,9 +97,7 @@ These are observations for the exact inputs tested through a local script, rathe
 
 ## Testing Notes
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
-
-The `bit32`, `buffer`, `debug`, `os`, `utf8`, and `vector` libraries are not
-exposed. `shared`, `math.isfinite`, `math.isinf`, `math.isnan`, `task.cancel`,
-`task.desynchronize`, and `task.synchronize` are also not exposed.
+The unavailable compatibility surface was also revalidated in 0.3.4 in both
+Script and LocalScript: `bit32`, `buffer`, `debug`, `os`, `utf8`, `vector`,
+and `shared` are `nil`. `math.isfinite`, `math.isinf`, `math.isnan`,
+`task.cancel`, `task.desynchronize`, and `task.synchronize` are also `nil`.

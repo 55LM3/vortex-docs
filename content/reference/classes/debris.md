@@ -62,8 +62,8 @@ Debris:AddItem(part, 5)
 
 ## Testing Notes
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
+The exposed method surface was revalidated in Vortex Studio 0.3.4; detailed
+method behavior may differ in later releases.
 
 `AddItem` and `SetMaxItems` are exposed in both `Script` and `LocalScript`.
 Calling `Debris:AddItem(part, 0)` removed an unparented temporary `Part` within

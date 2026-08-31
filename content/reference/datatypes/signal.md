@@ -83,13 +83,20 @@ Yields the current thread until the `Signal` fires. `Wait()` returns arguments p
 
 `Signal.new(name: String)` creates a standalone signal that can be connected to and fired.
 
-## Vortex Studio 0.3.3 notes
+## Vortex Studio 0.3.4 notes
 
-`ConnectParallel` is not exposed. `Connect`, `Fire`, `Once`, `Wait`, and
-`Signal.new` are confirmed. The lowercase `connect` and `fire` aliases are also
-exposed.
+`Connect`, `Once`, `Wait`, and `Fire` were revalidated on `Part.Changed` in
+both `Script` and `LocalScript`; a manually fired signal delivered once before
+disconnect and not afterward. `ConnectParallel` remains absent.
+
+In a LocalScript, `UserInputService.InputBegan:Once` and `:Wait` both delivered
+the same right-mouse-button input. A normal Script still has no
+`UserInputService`.
 
 The `Part` attribute/property-change signals used in the examples are
-connectable, but mutating the corresponding attribute or property did not
-deliver callbacks in the current runtime. Standalone signals and keyboard
-`UserInputService.InputBegan` callbacks did deliver.
+connectable, but mutating the corresponding attribute or property still did not
+deliver callbacks in 0.3.4.
+
+In 0.3.4, lowercase `connect` and `fire` work on `Part.Changed`, and
+`Signal.new` creates a standalone signal whose `Connect` callback receives a
+manually fired argument. This was confirmed in both Script and LocalScript.

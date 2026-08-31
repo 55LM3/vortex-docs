@@ -75,8 +75,8 @@ Signals of `RunService`.
 
 ## Testing Notes
 
-These observations are from Vortex Studio 0.3.3, the current public build, and
-may differ in later releases.
+These observations are from Vortex Studio 0.3.4 and may differ in later
+releases.
 
 `IsClient()` returned `true` in a `LocalScript` and `false` in a `Script`.
 `IsServer()` returned the inverse. `IsStudio()` returned `true` in both
