@@ -37,12 +37,12 @@ Methods of `game`.
 Services of `game`.
 <br><br>
 
-* [Workspace](/content/reference/classes/workspace.md)
-* [Players](/content/reference/classes/players.md)
-* [ReplicatedStorage](/content/reference/classes/replicated-storage.md)
-* [StarterPlayerScripts](/content/reference/classes/starter-player-scripts.md)
-* [ServerScriptService](/content/reference/classes/server-script-service.md)
-* [Lighting](/content/reference/classes/lighting.md)
+* [Workspace](../classes/workspace.md)
+* [Players](../classes/players.md)
+* [ReplicatedStorage](../classes/replicated-storage.md)
+* [StarterPlayerScripts](../classes/starter-player-scripts.md)
+* [ServerScriptService](../classes/server-script-service.md)
+* [Lighting](../classes/lighting.md)
 
 </details>
 
@@ -62,7 +62,7 @@ Services of `game`.
 
 > `Instance`
 > 
-> The Workspace is the root object that holds anything that is currently in the world. [Workspace](/content/reference/classes/workspace.md)
+> The Workspace is the root object that holds anything that is currently in the world. [Workspace](../classes/workspace.md)
 
 <br/>
 
@@ -70,7 +70,7 @@ Services of `game`.
 
 > `Instance`
 >
-> Stub. [Players](/content/reference/classes/players.md)
+> Stub. [Players](../classes/players.md)
 
 <br/>
 
@@ -78,7 +78,7 @@ Services of `game`.
 
 > `Instance`
 >
-> ReplicatedStorage contains objects replicated to the Client and Server. When the Server makes a modification, this is replicated to all clients. Any changes made by clients are not replicated to the server. [ReplicatedStorage](/content/reference/classes/replicated-storage.md)
+> ReplicatedStorage contains objects replicated to the Client and Server. When the Server makes a modification, this is replicated to all clients. Any changes made by clients are not replicated to the server. [ReplicatedStorage](../classes/replicated-storage.md)
 
 <br/>
 
@@ -86,7 +86,7 @@ Services of `game`.
 
 > `Instance`
 >
-> Stub. [StarterPlayerScripts](/content/reference/classes/starter-player-scripts.md)
+> Stub. [StarterPlayerScripts](../classes/starter-player-scripts.md)
 
 <br/>
 
@@ -94,7 +94,7 @@ Services of `game`.
 
 > `Instance`
 >
-> ServerScriptService contains [Scripts](/content/reference/classes/script.md) that run when the server starts. [ServerScriptService](/content/reference/classes/server-script-service.md)
+> ServerScriptService contains [Scripts](../classes/script.md) that run when the server starts. [ServerScriptService](../classes/server-script-service.md)
 
 <br/>
 
@@ -102,6 +102,6 @@ Services of `game`.
 
 > `Instance`
 >
-> Lighting is the game service that controls basic rendering and atmospherics. [Lighting](/content/reference/classes/lighting.md)
+> Lighting is the game service that controls basic rendering and atmospherics. [Lighting](../classes/lighting.md)
 
 <br/>

@@ -11,7 +11,7 @@ Written by KingTasaz on August 28th, 2026
 -->
 
 ## Summary
-When a texture is added to a [`part`](/content/reference/classes/part.md), its `Face` and `name` get set automatically, so adding 6 textures to cover an entire part is very quick.
+When a texture is added to a [`part`](./part.md), its `Face` and `name` get set automatically, so adding 6 textures to cover an entire part is very quick.
 <br><br>
 
 <details>
@@ -22,8 +22,8 @@ Properties of a Texture, in the order they appear on Vortex Studio.
 <details>
 <summary><b>Texture</b></summary>
 
-- [Face](#face): [`Enum.Face`](/content/reference/datatypes/enumitem.md)
-- [Texture](#texture): [`Enum.Texture`](/content/reference/datatypes/enumitem.md)
+- [Face](#face): [`Enum.Face`](../datatypes/enumitem.md)
+- [Texture](#texture): [`Enum.Texture`](../datatypes/enumitem.md)
 
 </details>
 
@@ -34,14 +34,14 @@ Properties of a Texture, in the order they appear on Vortex Studio.
 ## Properties
 
 ### Face
-> [`Enum.Face`](/content/reference/datatypes/enumitem.md) \
+> [`Enum.Face`](../datatypes/enumitem.md) \
 \
-Controls which face of the parent [`part`](/content/reference/classes/part.md) that the texture is displayed on.
+Controls which face of the parent [`part`](./part.md) that the texture is displayed on.
 
 <br/>
 
 ### Texture
-> [`Enum.Texture`](/content/reference/datatypes/enumitem.md) \
+> [`Enum.Texture`](../datatypes/enumitem.md) \
 \
 Sets which texture to render onto the selected face.
 Currently the only options are `Inlets` or `Studs`. 

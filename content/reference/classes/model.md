@@ -11,7 +11,7 @@ Written by KingTasaz on August 28th, 2026
 -->
 
 ## Summary
-Models are a very simple way to group [`parts`](/content/reference/classes/part.md) together.
+Models are a very simple way to group [`parts`](./part.md) together.
 Creating a model requires at least `2` parts selected, but otherwise the second part can be deleted. Parts in a model are not truly connected, but only grouped in the explorer. Models currently have no purpose other than organization.
 
 A model with no children is still shown in the explorer, but does not exist in the world and has no transform controls.
@@ -28,7 +28,7 @@ Properties of a Model, in the order they appear on Vortex Studio.
 <summary><b>Transform</b></summary>
 
 - [Name](#name): `String`
-- [Position](#position): [`Vector3`](/content/reference/datatypes/vector3.md)
+- [Position](#position): [`Vector3`](../datatypes/vector3.md)
 
 </details>
 
@@ -47,7 +47,7 @@ The name of the `model`, and its label in the explorer.
 
 
 ### Position
-> [`Vector3`](/content/reference/datatypes/vector3.md) \
+> [`Vector3`](../datatypes/vector3.md) \
 \
 The position of the `model`, in World-space.
 A model's position is automatically set to the mathematical average of all its children's positions. (See [Images](#images))
