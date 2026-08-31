@@ -28,27 +28,11 @@ print("Hello, " .. player.Name .. "!")
 - `Position`, `Rotation`, and `CFrame` - initially `nil`, writable
   Player-local projection fields in the tested runtime. They are not aliases
   for the public character root's physical transform.
-- `Orientation` - a writable [`Vector3`](../datatypes/vector3.md) rotation
-  value. This field is initially `nil` in the tested projection.
+- `Orientation` - an initially `nil`, writable
+  [`Vector3`](../datatypes/vector3.md) projection field. Its retained value is
+  not the verified route for visibly turning the Character.
 
-## Rotation
-
-`Player.Orientation` is the only verified character-rotation route in Vortex
-Studio 0.3.4. Assigning `Vector3.new(0, 90, 0)` from a server Script stored the
-value and visibly quarter-turned the Player character. The same assignment in
-a LocalScript also stored and read back successfully; its replication and
-visibility outside that LocalScript have not yet been tested.
-
-```luau
-player.Orientation = Vector3.new(0, 90, 0)
-```
-
-This is distinct from the Character and root-part projections: their tested
-orientation writes are discarded or rejected. See
-[Character](./character.md) and
-[HumanoidRootPart](./humanoid-root-part.md).
-
-## Transform projection fields
+## Player transform projection fields
 
 `Player.Position`, `Player.Rotation`, and `Player.CFrame` begin as `nil` but
 accept and retain assigned `Vector3`/`CFrame` values in both a server Script
@@ -63,9 +47,10 @@ writer retained its own values while the observer stayed `nil`. Do not use
 these fields for character movement, replicated state, or a server-client
 metadata channel.
 
-`Player.Orientation` is separate from this result: its server-side visual
-rotation effect is verified above, but its replication behavior has not yet
-been tested.
+`Player.Orientation` likewise accepts and retains a `Vector3`, but the
+isolated transform sequence did not establish it as a visual rotation route.
+Use [`Character.Orientation`](./character.md#write-only-visual-rotation)
+instead when the goal is to turn the visible Character.
 
 ## Methods and signals
 

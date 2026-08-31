@@ -80,6 +80,11 @@ It exposes the tested generic Instance method surface and a connectable
 `Changed` signal, but its tested hierarchy/lifecycle signals are unavailable.
 Like a detached Model, its pivot and primary-part APIs remain unavailable.
 
+The live Character Model is also the verified write-only visual rotation
+target: `character.Orientation = Vector3.new(0, 90, 0)` visibly turns the
+character in a server Script while the field remains `nil` on readback. See
+[Character: Write-only visual rotation](./character.md#write-only-visual-rotation).
+
 `Character:FindFirstChild("Humanoid")` and
 `Character:FindFirstChild("HumanoidRootPart")` return the same direct members.
 However, `Character:GetChildren()` returns one unnamed generic `Instance`, not

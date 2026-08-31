@@ -37,10 +37,26 @@ connectable. Model pivot and primary-part APIs are unavailable.
 as the public fields. The tested standard R6/R15 limb names are absent from
 this public projection.
 
-`Character.Orientation` is not a usable rotation route. It initially reads as
-`nil`; assigning `Vector3.new(0, 90, 0)` succeeds without an error but the
-subsequent read remains `nil`. Use [`Player.Orientation`](./player.md#rotation)
-for the currently verified character rotation control.
+## Write-only visual rotation
+
+`Character.Orientation` is the confirmed server-side route for turning the
+visible Character. Assigning `Vector3.new(0, 90, 0)` visibly quarter-turns the
+character even though `Character.Orientation` is `nil` before the assignment
+and remains `nil` after it. Treat it as a write-only visual command rather
+than readable transform state:
+
+```luau
+character.Orientation = Vector3.new(0, 90, 0)
+```
+
+After the visual turn, `Orientation`, `Rotation`, and `CFrame` remained `nil`
+on Player, Character, the public root, Humanoid, Scene, Armature, visual root,
+Torso, limbs, and Head. The exposed visual hierarchy supplies `Position`
+values only; it does not expose the resulting yaw for readback.
+
+This differs from `Player.Orientation`, which retains an assigned value but
+has no verified visible turn effect, and from the public
+[`HumanoidRootPart`](./humanoid-root-part.md), which rejects the write.
 
 ## Visual Scene projection
 
