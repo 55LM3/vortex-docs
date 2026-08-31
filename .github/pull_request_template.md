@@ -17,6 +17,10 @@
 - [ ] Links and images render correctly.
 - [ ] If the change affects a live site, the preview has been tested locally.
 - [ ] All paths are relative.
+- [ ] The PR is reasonably small
+
+## PR Format
+Please keep PRs relatively small and focused. If change is large, consider splitting it into multiple PRs.
 
 ## Additional notes
 
