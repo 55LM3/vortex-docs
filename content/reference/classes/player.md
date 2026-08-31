@@ -25,6 +25,9 @@ print("Hello, " .. player.Name .. "!")
 - `Name` - the player's name;
 - `ClassName` - `"Player"` for the current client projection;
 - `Character` - the current [`Character`](./character.md) `Model`, when available.
+- `Position`, `Rotation`, and `CFrame` - initially `nil`, writable
+  Player-local projection fields in the tested runtime. They are not aliases
+  for the public character root's physical transform.
 - `Orientation` - a writable [`Vector3`](../datatypes/vector3.md) rotation
   value. This field is initially `nil` in the tested projection.
 
@@ -44,6 +47,25 @@ This is distinct from the Character and root-part projections: their tested
 orientation writes are discarded or rejected. See
 [Character](./character.md) and
 [HumanoidRootPart](./humanoid-root-part.md).
+
+## Transform projection fields
+
+`Player.Position`, `Player.Rotation`, and `Player.CFrame` begin as `nil` but
+accept and retain assigned `Vector3`/`CFrame` values in both a server Script
+and a LocalScript. They do not update the public
+`Character.HumanoidRootPart`: an explicit three-stud `Player.Position` write
+left the root at its original position in both contexts, and a
+`Player.Rotation` write likewise caused no translation.
+
+`Position` and `Rotation` are also context-local. A 15-second server writer /
+LocalScript observer run, followed by the contexts swapped, showed that each
+writer retained its own values while the observer stayed `nil`. Do not use
+these fields for character movement, replicated state, or a server-client
+metadata channel.
+
+`Player.Orientation` is separate from this result: its server-side visual
+rotation effect is verified above, but its replication behavior has not yet
+been tested.
 
 ## Methods and signals
 
