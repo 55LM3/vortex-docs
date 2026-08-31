@@ -56,7 +56,7 @@ Services of `game`.
 * [ReplicatedStorage](../classes/replicated-storage.md)
 * [StarterPlayerScripts](../classes/starter-player-scripts.md)
 * [ServerScriptService](../classes/server-script-service.md)
-* [Lighting](../classes/lighting.md)
+* [Lighting](../classes/lighting.md) (editor-facing; not exposed by `game:GetService` in 0.3.4)
 * [Debris](../classes/debris.md)
 * [RunService](./runservice.md)
 * [TweenService](../classes/tween-service.md)
@@ -153,9 +153,10 @@ Services of `game`.
 
 ### Lighting
 
-> `Instance`
+> Unavailable in the tested runtime
 >
-> Lighting is the game service that controls basic rendering and atmospherics. [Lighting](../classes/lighting.md)
+> `game:GetService("Lighting")` rejects this service in both Script and
+> LocalScript in Vortex Studio 0.3.4. [Lighting](../classes/lighting.md)
 
 <br/>
 

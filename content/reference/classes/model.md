@@ -73,7 +73,7 @@ return the temporary Part.
 also unavailable (`nil`) in both contexts. Assigning `Model.PrimaryPart` is
 rejected as a non-settable property.
 
-In 0.3.4, the live Character Model is a special case. In both a LocalScript and
+In 0.3.4, the live [Character](./character.md) Model is a special case. In both a LocalScript and
 a confirmed server Script, it exposes `ClassName`, `Name`, and `Position`, plus
 direct `Humanoid` and `HumanoidRootPart` members; `Parent` reads as `nil`.
 It exposes the tested generic Instance method surface and a connectable
@@ -107,20 +107,66 @@ local function getCharacterScene(character)
 end
 ```
 
-In the tested 0.3.4 character, the initial visual hierarchy was:
+After the Scene resolves, its primary rig path is also directly indexable:
+
+```luau
+local armature = scene["Armature.001"]
+local visualRoot = armature.HumanoidRootPart
+local torso = visualRoot.Torso
+local leftArm = torso["Left Arm"]
+```
+
+The bracket form is required for the dot-containing `Armature.001` name and
+for limb names containing spaces. This inner visual root is distinct from the
+public `Character.HumanoidRootPart` Part projection.
+
+The following is the observed character projection after the visual Scene and
+the test avatar's attachments finished loading. `Humanoid` and the outer
+`HumanoidRootPart` are the stable direct Character members; the tree below the
+anonymous wrapper is the transient visual projection:
 
 ```text
-Scene
-├── Armature.001
-│   └── HumanoidRootPart
-│       └── Torso
-│           ├── Right Arm
-│           ├── Left Arm
-│           ├── Right Leg
-│           ├── Left Leg
-│           └── Head
-└── Body
+Character (Model)
+├── Humanoid                              public direct member
+├── HumanoidRootPart (Part projection)    public direct member
+└── <unnamed wrapper>                      Character:GetChildren()[1]
+    └── Scene
+        ├── Armature.001
+        │   └── HumanoidRootPart           visual generic Instance
+        │       └── Torso
+        │           ├── Right Arm
+        │           ├── Left Arm
+        │           ├── Right Leg
+        │           ├── Left Leg
+        │           ├── <unnamed attachment>
+        │           │   └── Scene
+        │           │       └── Spike Sword
+        │           │           └── Spike Sword.FBXASC051SG
+        │           ├── <unnamed attachment>
+        │           │   └── Scene
+        │           │       └── Angel wings
+        │           │           └── Angel wings.initialShadingGroup.002
+        │           ├── <unnamed attachment>
+        │           │   └── Scene
+        │           │       └── Body.003
+        │           │           └── R7Body.028.Material.034
+        │           └── Head
+        │               ├── <unnamed attachment>
+        │               │   └── Scene
+        │               │       └── PaperPlane Hat
+        │               │           └── PaperPlane Hat.initialShadingGroup.011
+        │               └── <unnamed attachment>
+        │                   └── Scene
+        │                       └── 3.002
+        │                           └── 3.002.Hair
+        └── Body
+            └── R7Body.Material.*          six observed render-material nodes
 ```
+
+The named accessory and material leaves are a concrete test-avatar capture,
+not a guaranteed hierarchy. The repeated unnamed attachment nodes are the
+stable structural pattern: they are direct children of `Torso` or `Head`, and
+their nested `Scene` contains the rendered attachment content.
 
 All of these visual nodes report `ClassName == "Instance"`. The observed
 surface is the generic hierarchy and attribute method set, plus readable
@@ -128,6 +174,15 @@ surface is the generic hierarchy and attribute method set, plus readable
 `TouchEnded` can be connected, but no delivery was observed while a limb's
 `Position` updated. The live limb transforms are therefore readable render
 state, not a replacement for the public `HumanoidRootPart` projection.
+
+Visual rig and attachment nodes also accept numeric `Transparency` writes in
+both a LocalScript and a server Script. An initially unset value reads as
+`nil`; after `node.Transparency = 0.5` or `0`, it reads back as that numeric
+value. The tested torso and leg did not visibly change when the field was
+written, so this is currently stored projection state rather than a confirmed
+render-opacity control. In contrast, the public
+[`Character.HumanoidRootPart`](./humanoid-root-part.md) rejects the same write
+in both contexts.
 
 The hierarchy changes during loading. In one verified run, unnamed attachment
 nodes appeared below `Torso` and `Head`, then each exposed a nested `Scene`.
@@ -138,6 +193,12 @@ a fresh base hierarchy; a direct `Cube` node also appeared on the replacement
 Scene in the observed run. Retain no visual-node reference across frames or
 loading phases—reacquire `Scene`, `Armature.001`, and any limb or attachment
 from the current Character hierarchy.
+
+Replacement destroys the old visual nodes rather than simply detaching them.
+After a replacement, trying to reparent a stored accessory node into the new
+visual rig failed with `Instance no longer exists`. A script can restore a
+node that was manually reparented during its current Scene generation, but it
+cannot carry that node across Vortex's Scene rebuild.
 
 Reparenting `Right Arm` and `Left Arm` from this visual hierarchy was observed
 to hide the corresponding rendered arms in both a LocalScript and a server

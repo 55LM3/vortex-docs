@@ -48,10 +48,11 @@ the tested hierarchy/lifecycle signals read as `nil`; none is connectable.
 
 ## Character-state authority
 
-Writing `HumanoidRootPart.Position` or `HumanoidRootPart.Size` is rejected in
-both a `LocalScript` and a confirmed server `Script`. The current error calls
-the property read-only in a LocalScript and says character state is
-server-authoritative, even when `RunService:IsServer()` reports `true`.
+Writing `HumanoidRootPart.Position`, `HumanoidRootPart.Size`, or
+`HumanoidRootPart.Orientation` is rejected in both a `LocalScript` and a
+confirmed server `Script`. The current error calls the property read-only in a
+LocalScript and says character state is server-authoritative, even when
+`RunService:IsServer()` reports `true`.
 
 Consequently, do not use the visible character root part as a server-side
 teleport, resize, or movement-control target in the current runtime. This is a
