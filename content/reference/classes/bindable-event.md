@@ -1,6 +1,6 @@
 ---
 title: BindableEvent
-description: Stub
+description: Bindable Events
 ---
 
-Stub
+Bindable events are objects that allow for communication between two scripts on the same side of the client-server boundary.
