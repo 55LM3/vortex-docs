@@ -2,11 +2,7 @@
 
 
 ## Type of change
-- [ ] New documentation.
-- [ ] Documentation update.
-- [ ] Documentation fix.
-- [ ] Typo/grammar fix.
-- [ ] Other.
+<!-- e.g. New documentation, Documentation update/fix, Typo/grammar fix -->
 
 ## Related issues
 
