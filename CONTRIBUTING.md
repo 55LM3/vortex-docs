@@ -33,6 +33,7 @@ There are two main ways to contribute:
 - Use a descriptive title and include in the context:
   - Screenshots, log snippets, or links
 - Use labels or suggest them in the issue body if you think they apply (bug, docs, enhancement).
+- You can also create an issue to request a new documentation page.
 
 ### Propose a change (pull request)
 
@@ -90,5 +91,6 @@ Before requesting review, ensure:
 - Any necessary screenshots or examples are included.
 - If the change affects a live site, the preview/build has been tested locally.
 - Ensure all paths are relative.
+- The PR relatively small and focused. (If change is large, consider splitting it into multiple PRs)
 ------------------------------------------------------------
 Thanks for taking the time to contribute to Vortex Docs!
