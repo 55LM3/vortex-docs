@@ -11,8 +11,8 @@
 - [ ] The PR targets the repository's default branch (e.g., `main`).
 - [ ] Spelling and grammar are correct.
 - [ ] Links and images render correctly.
-- [ ] If the change affects a live site, the preview has been tested locally.
 - [ ] All paths are relative.
+- [ ] No merge conflicts (your branch is up to date)
 - [ ] The PR is reasonably small
 
 ## Additional notes
